@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'dart:math';
 import 'dart:ui';
 
@@ -12,8 +12,12 @@ class BotonesPage extends StatefulWidget {
 }
 
 class _BotonesPage extends State<BotonesPage> {
+
+   
   @override
   Widget build(BuildContext context) {
+ 
+ 
 
     return Scaffold(
       appBar: AppBar(
@@ -40,7 +44,7 @@ class _BotonesPage extends State<BotonesPage> {
                 _swiperTarjetas(), 
                 _pagina2(),  
                 //_titulos(),
-                _botonesRedondeados()
+                //_botonesRedondeados()
               ],
               ),
           ),
@@ -57,7 +61,7 @@ class _BotonesPage extends State<BotonesPage> {
       ),
   
     
-     
+       bottomNavigationBar: _bottomNavigationBar(context)
 
     );
   }
@@ -122,29 +126,63 @@ class _BotonesPage extends State<BotonesPage> {
     );
   }
     Widget _swiperTarjetas(){
-    return Container(
+     return Container(
       width: double.infinity,
       height: 170.0,
    
    
       child: new Swiper(
-        itemBuilder: (BuildContext context , int index){
+        
+        itemBuilder: (BuildContext context, int index){
           return Image.network('https://registralo.spd.gov.cl/images/banner1.png', 
-          fit: BoxFit.fill);
+          fit: BoxFit.contain,);
           
-
         },
-       
+
       
         itemCount: 2,
         pagination: new SwiperPagination(),
         control: new SwiperControl(),
-      
+    
 
       ),
     );
-    
+
   }
+ 
+      
+  Widget _bottomNavigationBar(BuildContext context){
+    return Theme(
+      data:Theme.of(context).copyWith(
+        canvasColor: Color.fromRGBO(0, 134, 175, 0.8),
+        primaryColor: Color.fromRGBO(255,255,0,1.0),
+        textTheme: Theme.of(context).textTheme
+        .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(177, 177, 177, 1.0)))
+      ),
+      child: BottomNavigationBar(
+        selectedFontSize:12.0,
+        unselectedFontSize: 12.0,
+        items: [
+           BottomNavigationBarItem(
+            icon: Icon(Icons.search, size: 30,),
+            title: Text('Consultar Bien'),
+            
+            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help_outline, size: 30,),
+            title: Text('¿Cómo funciona?')
+            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail, size: 30,),
+            title: Text('Contacto')
+            ),
+        ],
+      ),
+
+    );
+
+  }
+
   // Widget _titulos() {
   //   return SafeArea(
   //     child: Container(
@@ -187,60 +225,60 @@ class _BotonesPage extends State<BotonesPage> {
   //     ),
   //   );
   // }
-  Widget _botonesRedondeados() {
+  // Widget _botonesRedondeados() {
    
-    return Table(
-      children: [
-        TableRow(
-          children: [
-            _crearBotonRedondeado( Colors.blue, Icons.search, 'Consultar bien' ),
-            _crearBotonRedondeado( Colors.green, Icons.info_outline, 'Consejos de prevención' ),
+  //   return Table(
+  //     children: [
+  //       TableRow(
+  //         children: [
+  //           _crearBotonRedondeado( Colors.blue, Icons.search, 'Consultar bien' ),
+  //           _crearBotonRedondeado( Colors.green, Icons.info_outline, 'Consejos de prevención' ),
             
             
-          ],
+  //         ],
         
           
-        ),
-        TableRow(
-          children: [
-            _crearBotonRedondeado( Colors.orange, Icons.mail, 'Contacto' ),
-            _crearBotonRedondeado( Colors.pink, Icons.help_outline, '¿Cómo funciona?' ),
-          ]
-        ),
+  //       ),
+  //       TableRow(
+  //         children: [
+  //           _crearBotonRedondeado( Colors.orange, Icons.mail, 'Contacto' ),
+  //           _crearBotonRedondeado( Colors.pink, Icons.help_outline, '¿Cómo funciona?' ),
+  //         ]
+  //       ),
         
         
-      ],
-    );
-  }
-  Widget _crearBotonRedondeado( Color color, IconData icono, String texto ) {
+  //     ],
+  //   );
+  // }
+  // Widget _crearBotonRedondeado( Color color, IconData icono, String texto ) {
  
  
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur( sigmaX: 10.0, sigmaY: 10.0 ),
-        child: Container(
-          height: 180.0,
-          margin: EdgeInsets.all(15.0),
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(202, 237, 255, 0.7),
-            borderRadius: BorderRadius.circular(20.0)
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              SizedBox( height: 5.0 ),
-              CircleAvatar(
-                backgroundColor: color,
-                radius: 35.0,
-                child: Icon( icono, color: Colors.white, size: 30.0 ),
-              ),
-              Text( texto , style: TextStyle( color: color )),
-              SizedBox( height: 5.0 )
-            ],
-          ),
+  //   return ClipRect(
+  //     child: BackdropFilter(
+  //       filter: ImageFilter.blur( sigmaX: 10.0, sigmaY: 10.0 ),
+  //       child: Container(
+  //         height: 180.0,
+  //         margin: EdgeInsets.all(15.0),
+  //         decoration: BoxDecoration(
+  //           color: Color.fromRGBO(202, 237, 255, 0.7),
+  //           borderRadius: BorderRadius.circular(20.0)
+  //         ),
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //           children: <Widget>[
+  //             SizedBox( height: 5.0 ),
+  //             CircleAvatar(
+  //               backgroundColor: color,
+  //               radius: 35.0,
+  //               child: Icon( icono, color: Colors.white, size: 30.0 ),
+  //             ),
+  //             Text( texto , style: TextStyle( color: color )),
+  //             SizedBox( height: 5.0 )
+  //           ],
+  //         ),
  
-        ),
-      ),
-    );
-  }
+  //       ),
+  //     ),
+  //   );
+  // }
 }
