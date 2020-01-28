@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class NewPage extends StatelessWidget{
+class ConsultaBien extends StatefulWidget{
 
+  @override
+  _ConsultaBienState createState() => _ConsultaBienState();
+}
+
+class _ConsultaBienState extends State<ConsultaBien> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
