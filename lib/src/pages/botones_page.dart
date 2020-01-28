@@ -4,15 +4,30 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'dart:math';
 import 'dart:ui';
 
+import 'NewPage.dart';
+
+
 class BotonesPage extends StatefulWidget {
-  BotonesPage({Key key}) : super(key: key);
+
 
   @override
-  _BotonesPage createState() => _BotonesPage();
+  _BotonesPage createState(){
+    return new _BotonesPage();
+  }
 }
 
 class _BotonesPage extends State<BotonesPage> {
 
+//Index TabBar 
+int _cIndex = 0;
+
+
+  _onTap(int index){
+    Navigator.of(context)
+    .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+      return new NewPage();
+    }));
+  }
 
 
    
@@ -43,8 +58,9 @@ class _BotonesPage extends State<BotonesPage> {
               children: <Widget>[
 
                 
-                _swiperTarjetas(), 
+                _carouselImages(), 
                 _pagina2(),  
+
                 //_titulos(),
                 //_botonesRedondeados()
               ],
@@ -62,7 +78,6 @@ class _BotonesPage extends State<BotonesPage> {
       ],
       ),
   
-    
        bottomNavigationBar: _bottomNavigationBar(context)
 
     );
@@ -103,18 +118,18 @@ class _BotonesPage extends State<BotonesPage> {
     );
     final cajaRosa = Transform.rotate(
       angle: -pi / 5.0,
-      child: Container(
-        height: 360.0,
-        width: 360.0,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(80.0),
-          gradient: LinearGradient(
-            colors: [
-              Colors.blue[600],
-            ]
-          )
-        ),
-      )
+      // child: Container(
+      //   height: 360.0,
+      //   width: 360.0,
+      //   decoration: BoxDecoration(
+      //     borderRadius: BorderRadius.circular(80.0),
+      //     gradient: LinearGradient(
+      //       colors: [
+      //         Colors.blue[600],
+      //       ]
+      //     )
+      //   ),
+      // )
     );
     
     return Stack(
@@ -127,7 +142,7 @@ class _BotonesPage extends State<BotonesPage> {
       ],
     );
   }
-    Widget _swiperTarjetas(){
+    Widget _carouselImages(){
      return Container(
       width: double.infinity,
       height: 130.0,
@@ -136,8 +151,6 @@ class _BotonesPage extends State<BotonesPage> {
           NetworkImage('https://registralo.spd.gov.cl/images/banner1.png'),
           NetworkImage('https://registralo.spd.gov.cl/images/banner2.png'),
           NetworkImage('https://registralo.spd.gov.cl/images/banner3.png'),
-          
-
         ],
         autoplay:true ,
         autoplayDuration: const Duration(seconds: 4),
@@ -150,20 +163,9 @@ class _BotonesPage extends State<BotonesPage> {
         borderRadius: true,
         showIndicator: true,
         dotBgColor: Colors.grey.withOpacity(0.3),
-        
-    
-       
-       
-
       ),
      );
-   
-
-  
-
     }
- 
-      
   Widget _bottomNavigationBar(BuildContext context){
     return Theme(
       data:Theme.of(context).copyWith(
@@ -172,14 +174,17 @@ class _BotonesPage extends State<BotonesPage> {
         textTheme: Theme.of(context).textTheme
         .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(177, 177, 177, 1.0)))
       ),
+
       child: BottomNavigationBar(
+        currentIndex: _cIndex,  
         selectedFontSize:12.0,
         unselectedFontSize: 12.0,
+
         items: [
            BottomNavigationBarItem(
             icon: Icon(Icons.search, size: 30,),
             title: Text('Consultar Bien'),
-            
+           
             ),
           BottomNavigationBarItem(
             icon: Icon(Icons.help_outline, size: 30,),
@@ -190,10 +195,18 @@ class _BotonesPage extends State<BotonesPage> {
             title: Text('Contacto')
             ),
         ],
+
+        onTap: _onTap,
+       
       ),
+      
+
 
     );
+
+
 
   }
 
 }
+
