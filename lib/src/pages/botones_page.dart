@@ -1,10 +1,13 @@
+import 'package:disenos/src/pages/comoFunciona.dart';
+import 'package:disenos/src/pages/consultaBien.dart';
+import 'package:disenos/src/pages/contacto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:carousel_pro/carousel_pro.dart';
 import 'dart:math';
 import 'dart:ui';
 
-import 'NewPage.dart';
+
 
 
 class BotonesPage extends StatefulWidget {
@@ -17,16 +20,36 @@ class BotonesPage extends StatefulWidget {
 }
 
 class _BotonesPage extends State<BotonesPage> {
-
-//Index TabBar 
-int _cIndex = 0;
-
+  
+  
+  //Index TabBar 
 
   _onTap(int index){
-    Navigator.of(context)
-    .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-      return new NewPage();
-    }));
+    print(index);
+    if(index == 0){
+      Navigator.of(context)
+      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+        return new ConsultaBien();
+      })
+      );
+    }
+    if(index == 1){
+      Navigator.of(context)
+      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+        return new ComoFunciona();
+      })
+      );
+    }
+    if(index == 2){
+      Navigator.of(context)
+      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+        return new Contacto();
+      })
+      );
+    }
+    
+
+   
   }
 
 
@@ -55,11 +78,12 @@ int _cIndex = 0;
         
           SingleChildScrollView(
             child: Column(
+
               children: <Widget>[
 
-                
+                //_welcome(),
                 _carouselImages(), 
-                _pagina2(),  
+                //_pagina2(),  
 
                 //_titulos(),
                 //_botonesRedondeados()
@@ -82,21 +106,21 @@ int _cIndex = 0;
 
     );
   }
-  Widget _pagina2() {
-  return SafeArea(
-    child: Container(
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text('Registralo.cl', style: TextStyle( color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold )),
-          SizedBox( height: 20.0 ),
-          Text('Para registrar bienes y consultar mayor detalle de bienes registrados en el sistema, debes inscribirte, completando en el icono REGISTRATE,', style: TextStyle( color: Colors.white, fontSize: 18.0 )),
-        ],
-      ),
-    ),
-  );
-}
+//   Widget _pagina2() {
+//   return SafeArea(
+//     child: Container(
+//       padding: EdgeInsets.all(20.0),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: <Widget>[
+//           Text('Registralo.cl', style: TextStyle( color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold )),
+//           SizedBox( height: 20.0 ),
+//           Text('Para registrar bienes y consultar mayor detalle de bienes registrados en el sistema, debes inscribirte, completando en el icono REGISTRATE,', style: TextStyle( color: Colors.white, fontSize: 18.0 )),
+//         ],
+//       ),
+//     ),
+//   );
+// }
 
 
 
@@ -142,8 +166,11 @@ int _cIndex = 0;
       ],
     );
   }
+
     Widget _carouselImages(){
      return Container(
+      
+      
       width: double.infinity,
       height: 130.0,
       child: Carousel(
@@ -159,7 +186,7 @@ int _cIndex = 0;
         dotSpacing: 25.0,
         dotColor: Colors.yellowAccent,
         dotIncreasedColor: Colors.white,
-        indicatorBgPadding: 0.5,
+        indicatorBgPadding: 0.3,
         borderRadius: true,
         showIndicator: true,
         dotBgColor: Colors.grey.withOpacity(0.3),
@@ -176,15 +203,15 @@ int _cIndex = 0;
       ),
 
       child: BottomNavigationBar(
-        currentIndex: _cIndex,  
+ 
         selectedFontSize:12.0,
         unselectedFontSize: 12.0,
 
         items: [
-           BottomNavigationBarItem(
+    
+          BottomNavigationBarItem(
             icon: Icon(Icons.search, size: 30,),
             title: Text('Consultar Bien'),
-           
             ),
           BottomNavigationBarItem(
             icon: Icon(Icons.help_outline, size: 30,),
@@ -194,6 +221,7 @@ int _cIndex = 0;
             icon: Icon(Icons.mail, size: 30,),
             title: Text('Contacto')
             ),
+        
         ],
 
         onTap: _onTap,
@@ -209,4 +237,6 @@ int _cIndex = 0;
   }
 
 }
+
+
 
