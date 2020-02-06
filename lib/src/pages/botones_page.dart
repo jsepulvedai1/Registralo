@@ -7,9 +7,6 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'dart:math';
 import 'dart:ui';
 
-
-
-
 class BotonesPage extends StatefulWidget {
 
 
@@ -22,38 +19,6 @@ class BotonesPage extends StatefulWidget {
 class _BotonesPage extends State<BotonesPage> {
   
   
-  //Index TabBar 
-
-  _onTap(int index){
-    print(index);
-    if(index == 0){
-      Navigator.of(context)
-      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new ConsultaBien();
-      })
-      );
-    }
-    if(index == 1){
-      Navigator.of(context)
-      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new ComoFunciona();
-      })
-      );
-    }
-    if(index == 2){
-      Navigator.of(context)
-      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new Contacto();
-      })
-      );
-    }
-    
-
-   
-  }
-
-
-   
   @override
   Widget build(BuildContext context) {
  
@@ -61,7 +26,7 @@ class _BotonesPage extends State<BotonesPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bienvenido '),
+        title: const Text('Inicio'),
         actions: <Widget>[
             // action button
             IconButton(
@@ -78,31 +43,14 @@ class _BotonesPage extends State<BotonesPage> {
         
           SingleChildScrollView(
             child: Column(
-
               children: <Widget>[
-
-                //_welcome(),
                 _carouselImages(), 
-                //_pagina2(),  
-
-                //_titulos(),
-                //_botonesRedondeados()
               ],
               ),
           ),
-          
-        // Container (
-        //   child: Column(
-        //   children: <Widget>[
-        //   _swiperTarjetas()
-        //     ],
-        //     )
-        // ),
-
       ],
       ),
-  
-       bottomNavigationBar: _bottomNavigationBar(context)
+      bottomNavigationBar: _bottomNavigationBar(context)
 
     );
   }
@@ -194,17 +142,20 @@ class _BotonesPage extends State<BotonesPage> {
      );
     }
   Widget _bottomNavigationBar(BuildContext context){
+    
     return Theme(
       data:Theme.of(context).copyWith(
         canvasColor: Color.fromRGBO(0, 134, 175, 0.8),
-        primaryColor: Color.fromRGBO(255,255,0,1.0),
+        primaryColor: Color.fromRGBO(255, 255, 0, 1.0),
+        
         textTheme: Theme.of(context).textTheme
-        .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(177, 177, 177, 1.0)))
+        .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(255, 255, 0, 1.0)))
       ),
 
       child: BottomNavigationBar(
  
         selectedFontSize:12.0,
+        
         unselectedFontSize: 12.0,
 
         items: [
@@ -235,8 +186,46 @@ class _BotonesPage extends State<BotonesPage> {
 
 
   }
+    //Index TabBar 
+
+  _onTap(int index){
+    print(index);
+    setState(() {
+    index = index;
+  });
+
+    if(index == 0){
+
+      
+      Navigator.of(context)
+      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+        return new ConsultaBien();
+      })
+      );
+    }
+    if(index == 1){
+      Navigator.of(context)
+      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+        return new ComoFunciona();
+      })
+      );
+    }
+    if(index == 2){
+      Navigator.of(context)
+      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+        return new Contacto();
+      })
+      );
+    }
+    
+
+   
+  }
+
+
 
 }
+
 
 
 
