@@ -31,6 +31,52 @@ class _ConsultaBienState extends State<ConsultaBien> {
       Stack(
         children: <Widget>[
          _fondoApp(),
+         Text("   Ingrese los parámetros de búsqueda:", style: TextStyle(color: Colors.blue[800], fontSize: 18, height: 2)),
+         
+         Form(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10, 40, 0, 20),
+                  child: TextFormField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black87
+                        )
+                      ),
+                      labelText: 'Username',
+                      labelStyle: TextStyle(fontSize: 18,
+                      color: Colors.blue[800], 
+                      )
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10, 20, 0, 20),
+                  child: TextFormField(
+                    obscureText: true,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white
+                          )
+                        ),
+                        labelText: 'Password',
+                        labelStyle: TextStyle(fontSize: 18,
+                        color: Colors.blue[800])
+                      ),
+                  )
+                ),
+              ],
+            ),
+          ),
 
 
         ],
