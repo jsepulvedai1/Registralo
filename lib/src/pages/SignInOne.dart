@@ -1,165 +1,97 @@
+
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
 
 
-class SignInOne extends StatelessWidget {
+String username='';
+class SingInOne extends StatefulWidget {
+
+
   @override
-  Widget build(BuildContext context) {   
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/fondo.png'),
-          fit: BoxFit.fill, 
-          
-        
-        )
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.transparent,
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(23),
-            child: ListView(
-              children: <Widget>[
-                SizedBox(height: 200,),
-                Form(
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                        child: TextFormField(
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                          decoration: InputDecoration(
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.black87
-                              )
-                            ),
-                            labelText: 'Username',
-                            labelStyle: TextStyle(fontSize: 18,
-                            color: Colors.white)
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        obscureText: true,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                          decoration: InputDecoration(
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white
-                              )
-                            ),
-                            labelText: 'Password',
-                            labelStyle: TextStyle(fontSize: 18,
-                            color: Colors.white)
-                          ),
-                      )
-                    ],
-                  ),
+  _SingInOne createState(){
+    return new _SingInOne();
+  }
+}
+
+class _SingInOne extends State<SingInOne> {
+
+TextEditingController user=new TextEditingController();
+TextEditingController pass=new TextEditingController();
+
+String msg='';
+
+Future<List> _login() async {
+  final response = await http.post("http://192.168.42.145/dashboard/my_site/get_data.php", body: {
+    "username": user.text,
+    "password": pass.text,
+  });
+  print(response.body.toString());
+  var datauser = json.decode(response.body);
+  print(datauser);
+  if(datauser.length==0){
+    setState(() {
+          msg="Login Fail";
+        });
+  }else{
+    if(datauser[0]['nivel']=='super'){
+       Navigator.pushNamed(context,'basico');
+       print('super..');
+    }else if(datauser[0]['nivel']=='bodega'){
+      print('bodegaaa');
+      Navigator.pushNamed(context, 'basico');
+    }
+
+    setState(() {
+          username= datauser[0]['username'];
+        });
+
+  }
+
+  return datauser;
+}
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Login"),),
+      body: Container(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text("Username",style: TextStyle(fontSize: 18.0),),
+              TextField(   
+                controller: user,                
+                decoration: InputDecoration(
+                  hintText: 'Username'
+                ),           
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20,bottom: 5),
-                  child: Text('Forgot your password?',
-                  textAlign: TextAlign.right,
-                    style: TextStyle(
-                      fontFamily: 'SFUIDisplay',
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white
-                    ),
-                    ),
+              Text("Password",style: TextStyle(fontSize: 18.0),),
+              TextField(  
+                controller: pass,  
+                obscureText: true,                
+                 decoration: InputDecoration(
+                  hintText: 'Password'
+                ),                
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: MaterialButton(
-                    onPressed: (){},
-                    child: Text('SIGN IN',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'SFUIDisplay',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white
-                    ),
-                    ),
-                    color: Color(0xffff2d55),
-                    elevation: 0,
-                    minWidth: 350,
-                    height: 60,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: MaterialButton(
-                    onPressed: (){},
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Icon(FontAwesomeIcons.facebookSquare),
-                        Text('Sign up with facebook',
-                        
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'SFUIDisplay'
-                        ),)
-                      ],
-                    ),
-                    color: Colors.transparent,
-                    elevation: 0,
-                    minWidth: 350,
-                    height: 60,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      side: BorderSide(color: Colors.white)
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 30),
-                  child: Center(
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Don't have an account? ",
-                            style: TextStyle(
-                              fontFamily: 'SFUIDisplay',
-                              color: Colors.white,
-                              fontSize: 15,
-                            )
-                          ),
-                          TextSpan(
-                            text: " Sign up",
-                            style: TextStyle(
-                              fontFamily: 'SFUIDisplay',
-                              color: Color(0xffff2d55),
-                              fontSize: 15,
-                            )
-                          )
-                        ]
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
+              
+              RaisedButton(
+                child: Text("Login"),
+                onPressed: (){
+                  _login();
+                  Navigator.pop(context); 
+                },
+              ),
+
+              Text(msg,style: TextStyle(fontSize: 20.0,color: Colors.red),)
+             
+
+            ],
           ),
         ),
       ),
     );
-  }
+}
 }
