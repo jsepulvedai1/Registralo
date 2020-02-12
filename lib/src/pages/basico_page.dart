@@ -5,6 +5,7 @@ class TabbedAppBarDemo extends StatefulWidget {
 
   @override
   _TabbedAppBarDemo createState(){
+    
     return new _TabbedAppBarDemo();
   }
 }
@@ -25,7 +26,10 @@ class _TabbedAppBarDemo extends State<TabbedAppBarDemo> {
               tabs: choices.map<Widget>((Choice choice) {
                 return Tab(
                   text: choice.title,
-                  icon: Icon(choice.icon),
+                  icon: Icon(
+                    choice.icon
+                  ),
+                  
                 );
               }).toList(),
             ),
@@ -48,16 +52,15 @@ class _TabbedAppBarDemo extends State<TabbedAppBarDemo> {
  
 class Choice {
   final String title;
-  final IconData icon;
-  const Choice({this.title, this.icon});
+  final Widget tabla;
+  final IconData  icon;
+  Choice({this.title, this.tabla,this.icon});
 }
  
-const List<Choice> choices = <Choice>[
-  Choice(title: 'Mis Bienes', icon: Icons.account_balance_wallet),
-  Choice(title: 'Registrar Bien', icon: Icons.beenhere),
-  Choice(title: 'Consultar Bien', icon: Icons.search),
-  Choice(title: 'Mis Datos', icon: Icons.insert_drive_file),
-  Choice(title: 'Contacto', icon: Icons.phone),
+final List<Choice> choices = <Choice>[
+  Choice(title: 'Mis Bienes', tabla: _tabla(),icon: Icons.account_balance_wallet),
+  Choice(title: 'Registrar Bien', tabla: _tabla2(),icon: Icons.account_balance_wallet),
+  
 ];
  
 class ChoicePage extends StatelessWidget {
@@ -66,7 +69,7 @@ class ChoicePage extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    
     return Card(
       color: Colors.white,
       child: Center(
@@ -74,18 +77,53 @@ class ChoicePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Icon(
-              choice.icon,
-              size: 150.0,
-              color: textStyle.color,
-            ),
-            Text(
-              choice.title,
-              style: textStyle,
-            ),
+           
+            choice.tabla
           ],
         ),
       ),
     );
   }
 }
+
+Widget _tabla(){
+    
+    return Table(
+      border: TableBorder.all(width: 1.0, color: Colors.black),
+      children: [
+        TableRow(children:[
+          TableCell(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                new Text('ID'),
+                new Text(['id'].toString()),
+              ]
+            )
+          )
+        ]),
+      ],
+    );
+      
+  }
+
+  Widget _tabla2(){
+    
+    return Table(
+      border: TableBorder.all(width: 1.0, color: Colors.black),
+      children: [
+        TableRow(children:[
+          TableCell(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                new Text('ID3'),
+                new Text(['id2'].toString()),
+              ]
+            )
+          )
+        ]),
+      ],
+    );
+      
+  }
