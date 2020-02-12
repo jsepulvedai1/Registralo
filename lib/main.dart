@@ -5,6 +5,9 @@ import 'package:splashscreen/splashscreen.dart';
 // import 'package:disenos/src/pages/scroll_page.dart';
 import 'package:disenos/src/pages/botones_page.dart';
 import 'package:disenos/src/pages/SignInOne.dart';
+import 'package:disenos/src/pages/basico_page.dart';
+
+
 //void main() => runApp(MyApp1());
  void main() {
   runApp(new MaterialApp(
@@ -24,10 +27,10 @@ class MyApp extends StatelessWidget {
       title: 'Diseños',
       initialRoute: 'botones',
       routes: {
-        // 'basico'  : (BuildContext context ) => BasicoPage(),
+        'basico'  : (BuildContext context ) => TabbedAppBarDemo(),
         // 'scroll'  : (BuildContext context ) => ScrollPage(),
         'botones' : (BuildContext context ) => BotonesPage(),
-        'login'  : (BuildContext context) =>   SignInOne(),
+        'login'  : (BuildContext context) =>   SingInOne(),
       },
     );
   }

@@ -26,7 +26,7 @@ class _BotonesPage extends State<BotonesPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Inicio'),
+        title: const Text('Bienvenido'),
         actions: <Widget>[
             // action button
             IconButton(
@@ -120,7 +120,7 @@ class _BotonesPage extends State<BotonesPage> {
       
       
       width: double.infinity,
-      height: 130.0,
+      height: 600.0,
       child: Carousel(
         images:[
           NetworkImage('https://registralo.spd.gov.cl/images/banner1.png'),
