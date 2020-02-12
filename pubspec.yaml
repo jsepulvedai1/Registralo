@@ -21,6 +21,8 @@ dependencies:
     sdk: flutter
   font_awesome_flutter: ^8.2.0
   splashscreen:
+  direct_select: ^1.0.0
+
 
   
 
