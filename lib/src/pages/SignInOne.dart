@@ -24,7 +24,7 @@ TextEditingController pass=new TextEditingController();
 String msg='';
 
 Future<List> _login() async {
-  final response = await http.post("http://192.168.42.145/dashboard/my_site/get_data.php", body: {
+  final response = await http.post("http://192.168.93.113//dashboard/my_site/get_data.php", body: {
     "username": user.text,
     "password": pass.text,
   });
