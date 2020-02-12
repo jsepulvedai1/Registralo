@@ -1,3 +1,4 @@
+import 'package:direct_select/direct_select.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -14,7 +15,30 @@ class ConsultaBien extends StatefulWidget{
 }
 
 class _ConsultaBienState extends State<ConsultaBien> {
-  @override
+ 
+
+  final elements0 =[
+    "Seleccione una categoría...",
+    "Bicicletas",
+    "Cámaras de Video",
+    "Cámaras Fotográficas",
+    "Computadores de Escritorio",
+    "Computadores Portátiles Laptop",
+    "Consolas de Juego",
+    "Instrumentos Musicales",
+    "Radios de Vehículo",
+    "Tablets",
+    "Teléfonos Celulares",
+    "Televisores",
+  ];
+  int selectedIndex1 = 0;
+  List<Widget> _buildItems1(){
+    return elements0
+    .map((val)=> MySelectionItem(
+      title: val,
+    ))
+    .toList();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +55,7 @@ class _ConsultaBienState extends State<ConsultaBien> {
       Stack(
         children: <Widget>[
          _fondoApp(),
-         Text("   Ingrese los parámetros de búsqueda:", style: TextStyle(color: Colors.blue[800], fontSize: 18, height: 2)),
+         Text("   Ingrese los parámetros de búsqueda:", style: TextStyle(color: Colors.indigo[900], fontSize: 20, height: 2)),
          
          Form(
             child: Column(
@@ -43,18 +67,37 @@ class _ConsultaBienState extends State<ConsultaBien> {
                       color: Colors.white,
                     ),
                     decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.black87
-                        )
-                      ),
-                      labelText: 'Username',
-                      labelStyle: TextStyle(fontSize: 18,
-                      color: Colors.blue[800], 
+                      // enabledBorder: UnderlineInputBorder(
+                      //   borderSide: BorderSide(
+                      //     color: Colors.black87
+                      //   )
+                      // ),
+                      labelText: 'Categoría',
+                      labelStyle: TextStyle(fontSize: 20,
+                      color: Colors.indigo[900], 
                       )
                     ),
                   ),
                 ),
+                DirectSelect(
+                  itemExtent: 10.0, 
+                  selectedIndex: selectedIndex1, 
+
+                  child: MySelectionItem(
+                    isForList: false,
+                    title: elements0[selectedIndex1],
+                  
+                    
+                    
+                    
+                  ),
+                  onSelectedItemChanged: (index){
+                    setState((){
+                      selectedIndex1 = index;
+                    });
+                  },
+                  items: _buildItems1(),
+                  ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 20, 0, 20),
                   child: TextFormField(
@@ -69,8 +112,8 @@ class _ConsultaBienState extends State<ConsultaBien> {
                           )
                         ),
                         labelText: 'Password',
-                        labelStyle: TextStyle(fontSize: 18,
-                        color: Colors.blue[800])
+                        labelStyle: TextStyle(fontSize: 20,
+                        color: Colors.indigo[900])
                       ),
                   )
                 ),
@@ -200,6 +243,50 @@ class _ConsultaBienState extends State<ConsultaBien> {
     
 
    
+  }
+  
+}
+
+//You can use any Widget
+class MySelectionItem extends StatelessWidget {
+  final String title;
+  final bool isForList;
+
+  const MySelectionItem({Key key, this.title, this.isForList = true})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 80.0,
+      child: isForList
+          ? Padding(
+              child: _buildItem(context),
+              padding: EdgeInsets.all(10.0),
+
+            )
+          : Card(
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              child: Stack(
+                children: <Widget>[
+                  _buildItem(context),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(Icons.arrow_drop_down),
+                  )
+                ],
+              ),
+            ),
+    );
+  }
+
+  _buildItem(BuildContext context) {
+    return Container(
+      width: 5.0,
+      alignment: Alignment.center,
+      child: Text(title)
+      ,
+    );
   }
 }
 

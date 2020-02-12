@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:splashscreen/splashscreen.dart';
-
-
 // import 'package:disenos/src/pages/basico_page.dart';
 // import 'package:disenos/src/pages/scroll_page.dart';
 import 'package:disenos/src/pages/botones_page.dart';
@@ -17,17 +15,13 @@ import 'package:disenos/src/pages/basico_page.dart';
     home: new MyApp1(),
   ));
 } 
-
 class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setSystemUIOverlayStyle( SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.transparent
     ));
-
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños',
@@ -40,15 +34,12 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-
  
 }
-
 class MyApp1 extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
 }
-
 class _MyAppState extends State<MyApp1> {
   @override
   Widget build(BuildContext context) {
