@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp1> {
         'Welcome In SplashScreen',
         style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
       ),
-      seconds: 4,
+      seconds: 5,
       navigateAfterSeconds: MyApp(),
       image: new Image.asset(
           'assets/loading.gif'),
