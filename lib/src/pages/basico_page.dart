@@ -58,8 +58,11 @@ class Choice {
 }
  
 final List<Choice> choices = <Choice>[
-  Choice(title: 'Mis Bienes', tabla: _tabla(),icon: Icons.account_balance_wallet),
-  Choice(title: 'Registrar Bien', tabla: _tabla2(),icon: Icons.account_balance_wallet),
+  Choice(title: 'Mis Bienes', tabla: _tabla(),icon: Icons.desktop_mac),
+  Choice(title: 'Registrar Bien', tabla: _tabla2(),icon: Icons.save),
+  Choice(title: 'consulta Bien', tabla: _tabla2(),icon: Icons.search),
+  Choice(title: 'Mis Datos', tabla: _tabla2(),icon: Icons.person),
+  Choice(title: 'Contacto', tabla: _tabla2(),icon: Icons.phone_iphone),
   
 ];
  
