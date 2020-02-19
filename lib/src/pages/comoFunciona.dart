@@ -129,20 +129,20 @@ class _ComoFuncionaState extends State<ComoFunciona> {
     index = index;
   });
 
-    if(index == 0){
-      Navigator.of(context)
-      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new ConsultaBien();
-      })
-      );
-    }
-    if(index == 2){
-      Navigator.of(context)
-      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new Contacto();
-      })
-      );
-    }
+    // if(index == 0){
+    //   Navigator.of(context)
+    //   .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+    //     return new ConsultaBien();
+    //   })
+    //   );
+    // }
+    // if(index == 2){
+    //   Navigator.of(context)
+    //   .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+    //     return new Contacto();
+    //   })
+    //   );
+    // }
     
 
    
