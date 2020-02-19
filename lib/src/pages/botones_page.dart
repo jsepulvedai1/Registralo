@@ -199,7 +199,7 @@ class _BotonesPage extends State<BotonesPage> {
       
       Navigator.of(context)
       .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new ConsultaBien();
+        return new DropDown();
       })
       );
     }
@@ -210,13 +210,13 @@ class _BotonesPage extends State<BotonesPage> {
       })
       );
     }
-    if(index == 2){
-      Navigator.of(context)
-      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new Contacto();
-      })
-      );
-    }
+    // if(index == 2){
+    //   Navigator.of(context)
+    //   .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+    //     return new Contacto();
+    //   })
+    //   );
+    // }
     
 
    
