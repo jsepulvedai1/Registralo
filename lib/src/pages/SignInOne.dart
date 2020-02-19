@@ -28,14 +28,10 @@ TextEditingController pass=new TextEditingController();
 String msg='';
 
 Future<List> _login() async {
-  final response = await http.post("http://192.168.125.129///dashboard/my_site/get_data.php", body: {
+  final response = await http.post("http://192.168.43.41/dashboard/my_site/get_data.php", body: {
     "username": user.text,
     "password": pass.text,
   });
-  print(user.text);
-  print("dsd");
-  print(pass.text);
-  print(response.body.toString());
   var datauser = json.decode(response.body);
   print(datauser);
   if(datauser.length==0){
