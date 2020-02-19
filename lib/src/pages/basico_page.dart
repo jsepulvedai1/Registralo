@@ -15,7 +15,9 @@ class _TabbedAppBarDemo extends State<TabbedAppBarDemo> {
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: choices.length,
         child: Scaffold(

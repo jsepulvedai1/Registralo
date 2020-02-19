@@ -1,16 +1,8 @@
-import 'package:direct_select/direct_select.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:disenos/src/pages/comoFunciona.dart';
-import 'package:disenos/src/pages/contacto.dart';
-import 'dart:math';
-import 'package:flutter/material.dart' as prefix0;
-import 'package:flutter/cupertino.dart';
 
-
-import 'package:flutter/material.dart';
- 
 class DropDown extends StatefulWidget {
   DropDown() : super();
  
@@ -36,17 +28,40 @@ class Company {
     ];
   }
 }
+
+class Bici {
+  int id;
+  String name;
+ 
+  Bici(this.id, this.name);
+ 
+  static List<Bici> getBici() {
+    return <Bici>[
+      Bici(1, 'Bci1'),
+      Bici(2, 'bov2'),
+      Bici(3, 'bici3'),
+      Bici(4, 'bici4'),
+      Bici(5, 'bici5'),
+    ];
+  }
+}
  
 class DropDownState extends State<DropDown> {
   //
   List<Company> _companies = Company.getCompanies();
   List<DropdownMenuItem<Company>> _dropdownMenuItems;
   Company _selectedCompany;
+  List<Bici> _bici = Bici.getBici();
+  List<DropdownMenuItem<Bici>> _dropdownMenuItems2;
+  Bici _selectedCompany2;
  
   @override
   void initState() {
     _dropdownMenuItems = buildDropdownMenuItems(_companies);
     _selectedCompany = _dropdownMenuItems[0].value;
+    _dropdownMenuItems2 = buildDropdownMenuItems2(_bici);
+    _selectedCompany2 = _dropdownMenuItems2[0].value;
+
     super.initState();
   }
  
@@ -63,15 +78,41 @@ class DropDownState extends State<DropDown> {
     return items;
   }
  
-  onChangeDropdownItem(Company selectedCompany) {
+  List<DropdownMenuItem<Bici>> buildDropdownMenuItems2(List bici) {
+    List<DropdownMenuItem<Bici>> items = List();
+    for (Bici bici in bici) {
+      items.add(
+        DropdownMenuItem(
+          value: bici,
+          child: Text(bici.name),
+        ),
+      );
+    }
+    return items;
+  }
+  onChangeDropdownItem(Company selectedCompany ) {
     setState(() {
       _selectedCompany = selectedCompany;
+    
+
     });
   }
- 
+  onChangeDropdownItem2(Bici selectbici ) {
+    setState(() {
+
+      _selectedCompany2 = selectbici;
+
+    });
+  }
+  Map<String,String>eleccion ={
+    'Apple':'bici',
+    'Samsung':'pera',
+    'null':'dasd'
+  };
+
   @override
   Widget build(BuildContext context) {
-    String id;
+        
         return new MaterialApp(
           debugShowCheckedModeBanner: false,
           home: new Scaffold(
@@ -97,7 +138,15 @@ class DropDownState extends State<DropDown> {
                       height: 20.0,
                     ),
                     Text('Selected: ${_selectedCompany.name}'),
-                    
+                    DropdownButton(
+                      value: _selectedCompany2,
+                      items: _dropdownMenuItems2,
+                      onChanged: onChangeDropdownItem2,
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Text( eleccion['${_selectedCompany.name}']),
                 
               ],
             ),
@@ -107,3 +156,16 @@ class DropDownState extends State<DropDown> {
     );
   }
 }
+
+class Choice {
+  final String title;
+  final String tabla;
+  Choice({this.title, this.tabla,});
+}
+ 
+final List<Choice> choices = <Choice>[
+  Choice(title: 'Apple', tabla: 'hola'),
+  Choice(title: 'Samsung', tabla: 'hola'),
+  
+  
+];

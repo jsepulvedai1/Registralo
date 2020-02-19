@@ -22,14 +22,14 @@ class  _MyApp1 extends State<MyApp1> {
     super.initState();
     Timer(Duration(seconds: 3), () =>Navigator.pushNamed(context, "botones"));
   }
-  @override
+   @override
   Widget build(BuildContext context) {
-    Scaffold(
+    return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Colors.blueAccent),
+            decoration: BoxDecoration(color: Colors.redAccent),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -41,10 +41,10 @@ class  _MyApp1 extends State<MyApp1> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundColor: Colors.black,
+                        backgroundColor: Colors.white,
                         radius: 50.0,
                         child: Icon(
-                          Icons.stay_primary_portrait,
+                          Icons.shopping_cart,
                           color: Colors.greenAccent,
                           size: 50.0,
                         ),
@@ -68,9 +68,7 @@ class  _MyApp1 extends State<MyApp1> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    CircularProgressIndicator(
-                      backgroundColor: Colors.white,
-                    ),
+                    CircularProgressIndicator(),
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
                     ),
