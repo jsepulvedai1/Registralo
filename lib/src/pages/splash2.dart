@@ -29,7 +29,7 @@ class  _MyApp1 extends State<MyApp1> {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Colors.redAccent),
+            decoration: BoxDecoration(color: Colors.blueAccent),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +68,7 @@ class  _MyApp1 extends State<MyApp1> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    CircularProgressIndicator(),
+                    CircularProgressIndicator(backgroundColor: Colors.white ,),
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
                     ),
