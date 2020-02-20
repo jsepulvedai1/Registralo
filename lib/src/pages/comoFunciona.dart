@@ -7,144 +7,69 @@ import 'package:flutter/material.dart' as prefix0;
 import 'dart:math';
 
 
-class ComoFunciona extends StatefulWidget{
+class ComoFunciona extends StatelessWidget{
+  final estiloTitulo    = TextStyle( color: Color.fromRGBO(255, 255, 0, 1),fontSize: 20.0, fontWeight: FontWeight.bold, backgroundColor: Color.fromRGBO(41, 51, 125, 1), );
 
-  @override
-  _ComoFuncionaState createState() => _ComoFuncionaState();
-}
-
-class _ComoFuncionaState extends State<ComoFunciona> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Como Funciona"),
-         actions: <Widget>[
-            // action button
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: ()=> Navigator.pushNamed(context, 'botones'),
-            ),
-        ]
-        ),
-      body: 
-      Stack(
-        children: <Widget>[
-         _fondoApp(),
-        ],
-    ),
-     bottomNavigationBar: _bottomNavigationBar(context),
-    );
-  }
-    Widget _fondoApp(){
-    final gradiente = Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: FractionalOffset(0.0, 0.6),
-          end: FractionalOffset(0.0, 1.0),
-          colors: [
-            Color.fromRGBO(148, 196, 254, 1.0),
-            Color.fromRGBO(0, 132, 170, 1.0)
-          ]
-        )
-      ),
-    );
-    final cajaRosa = Transform.rotate(
-      angle: -pi / 5.0,
-      // child: Container(
-      //   height: 360.0,
-      //   width: 360.0,
-      //   decoration: BoxDecoration(
-      //     borderRadius: BorderRadius.circular(80.0),
-      //     gradient: LinearGradient(
-      //       colors: [
-      //         Colors.blue[600],
-      //       ]
-      //     )
-      //   ),
-      // )
-    );
-    
-    return Stack(
-      children: <Widget>[
-        gradiente,
-        Positioned(
-          top: -100.0,
-          child: cajaRosa
-        )
-      ],
-    );
-  }
-
-    Widget _bottomNavigationBar(BuildContext context){
-    
-    return Theme(
-      data:Theme.of(context).copyWith(
-        canvasColor: Color.fromRGBO(0, 134, 175, 0.8),
-        primaryColor: Color.fromRGBO(255, 255, 0, 1.0),
-        
-        textTheme: Theme.of(context).textTheme
-        .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(255, 255, 0, 1.0)))
-      ),
-
-      child: BottomNavigationBar(
- 
-        selectedFontSize:12.0,
-        
-        unselectedFontSize: 12.0,
-
-        items: [
-    
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search, size: 30,),
-            title: Text('Consultar Bien'),
-            ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help_outline, size: 30,),
-            title: Text('¿Cómo funciona?')
-            ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mail, size: 30,),
-            title: Text('Contacto')
-            ),
-        
-        ],
-
-        onTap: _onTap,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _crearImagen(context),
+            _crearTitulo(),
        
-      ),
-      
-
-
+            _crearTexto(),
+          ],
+        ),
+      )
     );
-
-
-
   }
-    _onTap(int index){
-    print(index);
-    setState(() {
-    index = index;
-  });
+  Widget _crearImagen(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: GestureDetector(
+        onTap: ()=> Navigator.pushNamed(context, 'scroll'),
+        child: Image(
+          image: NetworkImage('https://registralo.spd.gov.cl//images/img_comofunciona.png'),
+          height: 200.0,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+  Widget _crearTitulo() {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('¿Cómo funciona?', style: estiloTitulo ),
+                  SizedBox( height: 7.0 ),
+           
+                ],
+              ),
+            ),
+       
+          ],
+        ),
+      ),
+    );
+  }
 
-    // if(index == 0){
-    //   Navigator.of(context)
-    //   .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-    //     return new ConsultaBien();
-    //   })
-    //   );
-    // }
-    // if(index == 2){
-    //   Navigator.of(context)
-    //   .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-    //     return new Contacto();
-    //   })
-    //   );
-    // }
-    
-
-   
+  Widget _crearTexto() {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric( horizontal: 40.0 ),
+        child: Text(
+          'Registralo es una iniciativa de la Subsecretaría de Prevención del Delito, supervisada por el Centro de Estudios y Análisis del Delito (CEAD), enmarcada dentro de las iniciativas relacionadas con la prevención de los mercados de bienes robados en Chile.\n\nRegistralo.cl puede utilizarse como usuario sólo de consulta, para lo cual, en la barra de herramientas se debe escoger Consulta Bien, seleccionando una Categoría y Marca y completando los datos de identificación del bien que deseas consultar. \n\nPara registrar bienes y consultar mayor detalle de bienes registrados en el sistema, debes inscribirte, completando en el icono REGISTRATE, los datos que te identifiquen como usuario de registralo.cl Al acceder a tu cuenta de usuario, se despliega una barra de herramientas donde podrás Registrar y Consultar Bienes, además de un inventario de tus bienes registrados y un módulo que contiene los Datos de tu información personal y de contacto.\n\nAl registrar tus bienes, y en el caso de su robo o extravío, registralo.cl facilitará la identificación y el contacto a los legítimos dueños de los bienes hallados en procedimiento de la Policía de Investigaciones o Carabineros de Chile y favorecerá su devolución.\n\n\n',
+          textAlign: TextAlign.justify,
+        ),
+      ),
+    );
   }
 }
