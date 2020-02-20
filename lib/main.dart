@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños',
-      initialRoute: 'botones',
+      initialRoute: 'inicio',
       routes: {
         'basico'  : (BuildContext context ) => TabbedAppBarDemo(),
         // 'scroll'  : (BuildContext context ) => ScrollPage()

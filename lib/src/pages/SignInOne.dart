@@ -134,7 +134,7 @@ Future<List> _login() async {
 	                      borderRadius: BorderRadius.circular(10),
 	                      boxShadow: [
 	                        BoxShadow(
-	                          color: Color.fromRGBO(143, 148, 251, .2),
+	                          color: Color.fromRGBO(48, 52, 132, .2),
 	                          blurRadius: 20.0,
 	                          offset: Offset(0, 10)
 	                        )
@@ -212,45 +212,3 @@ Future<List> _login() async {
 
 
 
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text("Login"),),
-//       body: Container(
-//         child: Center(
-//           child: Column(
-//             children: <Widget>[
-//               Text("Username",style: TextStyle(fontSize: 18.0),),
-//               TextField(   
-//                 controller: user,                
-//                 decoration: InputDecoration(
-//                   hintText: 'Username'
-//                 ),           
-//                 ),
-//               Text("Password",style: TextStyle(fontSize: 18.0),),
-//               TextField(  
-//                 controller: pass,  
-//                 obscureText: true,                
-//                  decoration: InputDecoration(
-//                   hintText: 'Password'
-//                 ),                
-//                 ),
-              
-//               RaisedButton(
-//                 child: Text("Login"),
-//                 onPressed: (){
-//                   _login();
-//                   Navigator.pop(context); 
-//                 },
-//               ),
-
-//               Text(msg,style: TextStyle(fontSize: 20.0,color: Colors.red),)
-             
-
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-// }
