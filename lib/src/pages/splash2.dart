@@ -1,13 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 //import 'package:splashscreen/splashscreen.dart';
 // import 'package:disenos/src/pages/basico_page.dart';
 // import 'package:disenos/src/pages/scroll_page.dart';
-import 'package:disenos/src/pages/botones_page.dart';
-import 'package:disenos/src/pages/SignInOne.dart';
-import 'package:disenos/src/pages/basico_page.dart';
+
 import 'package:disenos/src/pages/utils/flutkart.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -20,7 +17,7 @@ class  _MyApp1 extends State<MyApp1> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () =>Navigator.pushNamed(context, "botones"));
+    Timer(Duration(seconds: 3), () =>Navigator.pushReplacementNamed(context, "botones"));
   }
    @override
   Widget build(BuildContext context) {

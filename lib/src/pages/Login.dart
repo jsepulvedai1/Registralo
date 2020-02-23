@@ -116,7 +116,11 @@ Future<List> _login() async {
 	                    child: FadeAnimation(1.6, Container(
 	                      margin: EdgeInsets.only(top: 50),
 	                      child: Center(
-	                        child: Text("Registralo.cl", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
+	                        child: Text("Registralo.cl", 
+                          style: TextStyle(
+                          color: Colors.white, fontSize: 40, 
+                          fontWeight: FontWeight.bold),),
+                          
 	                      ),
 	                    )),
 	                  )
@@ -134,7 +138,7 @@ Future<List> _login() async {
 	                      borderRadius: BorderRadius.circular(10),
 	                      boxShadow: [
 	                        BoxShadow(
-	                          color: Color.fromRGBO(48, 52, 132, .2),
+	                          color: Color.fromRGBO(0, 0, 0, .2),
 	                          blurRadius: 20.0,
 	                          offset: Offset(0, 10)
 	                        )
@@ -178,8 +182,8 @@ Future<List> _login() async {
 	                      borderRadius: BorderRadius.circular(10),
 	                      gradient: LinearGradient(
 	                        colors: [
-	                          Color.fromRGBO(143, 148, 251, 1),
-	                          Color.fromRGBO(143, 148, 251, .6),
+	                          Color.fromRGBO(120, 200, 240, 1),
+	                          Color.fromRGBO(120, 200, 240, .6),
 	                        ]
 	                      )
 	                    ),

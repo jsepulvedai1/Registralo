@@ -26,7 +26,7 @@ class _BotonesPage extends State<BotonesPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bienvenido'),
+        title: Image.asset('assets/appbar.png', fit: BoxFit.cover),
         actions: <Widget>[
             // action button
             IconButton(
@@ -82,8 +82,8 @@ class _BotonesPage extends State<BotonesPage> {
           begin: FractionalOffset(0.0, 0.6),
           end: FractionalOffset(0.0, 1.0),
           colors: [
-            Color.fromRGBO(148, 196, 254, 1.0),
-            Color.fromRGBO(0, 132, 170, 1.0)
+            Color.fromRGBO(120, 200, 240, 1.0),
+            Color.fromRGBO(128, 208, 250, 2.0)
           ]
         )
       ),
@@ -122,18 +122,16 @@ class _BotonesPage extends State<BotonesPage> {
       width: double.infinity,
       height: 600.0,
       child: Carousel(
+    
         images:[
-          NetworkImage('https://registralo.spd.gov.cl/images/banner1.png'),
-          NetworkImage('https://registralo.spd.gov.cl/images/banner2.png'),
-          NetworkImage('https://registralo.spd.gov.cl/images/banner3.png'),
+          Image.asset('assets/banner1_vertical_02.png'),
+          Image.asset('assets/banner2_vertical_02.png'),
+          Image.asset('assets/banner3_vertical_02.png'),
         ],
         autoplay:true ,
         autoplayDuration: const Duration(seconds: 4),
         boxFit: BoxFit.contain,
-        dotSize: 8.0,
-        dotSpacing: 25.0,
-        dotColor: Colors.yellowAccent,
-        dotIncreasedColor: Colors.white,
+        
         indicatorBgPadding: 0.3,
         borderRadius: true,
         showIndicator: true,
