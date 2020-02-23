@@ -15,10 +15,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Repository repo = Repository();
 
-  List<String> _states = ["Choose a state"];
-  List<String> _lgas = ["Choose .."];
-  String _selectedState = "Choose a state";
-  String _selectedLGA = "Choose ..";
+  List<String> _states = ["Selcione un Categoria"];
+  List<String> _lgas = ["marca .."];
+  String _selectedState = "Selcione un Categoria";
+  String _selectedLGA = "marca ..";
 
   @override
   void initState() {
@@ -70,12 +70,13 @@ class _HomeState extends State<Home> {
                           child: Text("Consultar"),
 
                             onPressed: (){
-                               _login('javier','123');
+                               var rr =_login('javier','123');
                             //Navigator.pop(context); 
                           },
                         ),
-
+            
               )
+              
             ],
             
           ),

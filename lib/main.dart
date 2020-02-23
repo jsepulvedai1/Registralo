@@ -1,19 +1,13 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:splashscreen/splashscreen.dart';
-// import 'package:disenos/src/pages/basico_page.dart';
-// import 'package:disenos/src/pages/scroll_page.dart';
-import 'package:disenos/src/pages/botones_page.dart';
-import 'package:disenos/src/pages/SignInOne.dart';
-import 'package:disenos/src/pages/basico_page.dart';
-import 'package:disenos/src/pages/utils/flutkart.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'package:disenos/src/pages/principal.dart';
+import 'package:disenos/src/pages/Login.dart';
+import 'package:disenos/src/pages/post_login.dart';
 import 'package:disenos/src/pages/splash2.dart';
 
 
-//void main() => runApp(MyApp1());
+
+
  void main() {
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -53,14 +47,15 @@ class MyApp extends StatelessWidget {
 //   Widget build(BuildContext context) {
 //     return new SplashScreen(
 //       title: new Text(
-//         'Welcome In SplashScreen',
-//         style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+//         'Bienvenido Registralo',
+//         style: new TextStyle( fontWeight: FontWeight.bold, fontSize: 20.0,),
 //       ),
 //       seconds: 5,
 //       navigateAfterSeconds: MyApp(),
 //       image: new Image.asset(
-//           'assets/loading.gif'),
-//       backgroundColor: Colors.black,
+//       'assets/images_registralo.png'),
+
+//       backgroundColor: Colors.blueAccent,
 //       styleTextUnderTheLoader: new TextStyle(),
 //       photoSize: 150.0,
 //       onClick: () => print("Flutter Egypt"),
