@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:disenos/src/pages/consultaBien.dart';
-import 'package:disenos/src/pages/comoFunciona.dart';
-import 'package:flutter/material.dart' as prefix0;
 import 'dart:math';
 
 
@@ -20,13 +17,7 @@ class _ContactoState extends State<Contacto> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Contacto"),
-        actions: <Widget>[
-            // action button
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: ()=> Navigator.pushNamed(context, 'botones'),
-            ),
-        ]
+     
         ),
       body: 
       Stack(

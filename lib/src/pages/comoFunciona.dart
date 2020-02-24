@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:disenos/src/pages/contacto.dart';
-import 'package:disenos/src/pages/consultaBien.dart';
-import 'package:flutter/material.dart' as prefix0;
-import 'dart:math';
+
 
 
 class ComoFunciona extends StatelessWidget{
