@@ -1,11 +1,11 @@
 import 'package:disenos/src/pages/comoFunciona.dart';
 import 'package:disenos/src/pages/consultaBien.dart';
-import 'package:disenos/src/pages/contacto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:carousel_pro/carousel_pro.dart';
 import 'dart:math';
 import 'dart:ui';
+import 'contacto.dart';
 
 class BotonesPage extends StatefulWidget {
 
@@ -26,11 +26,12 @@ class _BotonesPage extends State<BotonesPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/appbar.png', fit: BoxFit.cover),
+        
+        title: Image.asset('assets/appbar.png', fit: BoxFit.cover, alignment: Alignment.centerRight,),
         actions: <Widget>[
             // action button
             IconButton(
-              icon: Icon(Icons.person_outline),
+              icon: Icon(Icons.person_outline, size: 38,),
               onPressed: ()=> Navigator.pushNamed(context, 'login'),
             ),
         ]
@@ -192,9 +193,7 @@ class _BotonesPage extends State<BotonesPage> {
     index = index;
   });
 
-    if(index == 0){
-
-      
+    if(index == 0){ 
       Navigator.of(context)
       .push(MaterialPageRoute<Null>(builder: (BuildContext context){
         return new Home();
@@ -208,13 +207,13 @@ class _BotonesPage extends State<BotonesPage> {
       })
       );
     }
-    // if(index == 2){
-    //   Navigator.of(context)
-    //   .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-    //     return new Contacto();
-    //   })
-    //   );
-    // }
+    if(index == 2){
+      Navigator.of(context)
+      .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+        return new Contacto();
+      })
+      );
+    }
     
 
    
