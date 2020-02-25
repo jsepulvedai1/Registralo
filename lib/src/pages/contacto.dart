@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'dart:math';
+import 'package:direct_select/direct_select.dart';
 
 
 class Contacto extends StatefulWidget{
@@ -11,58 +11,95 @@ class Contacto extends StatefulWidget{
 }
 
 class _ContactoState extends State<Contacto> {
+
+  final estiloTitulo    = TextStyle( color: Color.fromRGBO(255, 255, 0, 1),fontSize: 20.0, fontWeight: FontWeight.bold, backgroundColor: Color.fromRGBO(41, 51, 125, 1), );
   final _formKey = GlobalKey<FormState>();
+   final elements1 = [
+    "Breakfast",
+    "Lunch",
+    "2nd Snack",
+    "Dinner",
+    "3rd Snack",
+  ];
+  int selectedIndex1 = 0;
+   List<Widget> _buildItems1() {
+    return elements1
+        .map((val) => MySelectionItem(
+              title: val,
+            ))
+        .toList();
+  }
   @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Contacto"),
-     
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _crearImagen(context),
+            _crearTitulo(),
+       
+            _formulario(),
+             DirectSelect(
+                    itemExtent: 35.0,
+                    selectedIndex: selectedIndex1,
+                    child: MySelectionItem(
+                      isForList: false,
+                      title: elements1[selectedIndex1],
+                    ),
+                    onSelectedItemChanged: (index) {
+                      setState(() {
+                        selectedIndex1 = index;
+                      });
+                    },
+                    items: _buildItems1()),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, top: 20.0),
+                  child: Text(
+                    "Search our database by name",
+                    style: TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.w500),
+                  ),
+                ),
+          ],
         ),
-      body: 
-      Stack(
-        children: <Widget>[
-         _fondoApp(),
-        ],
-    ),
-     
+      )
     );
   }
-    Widget _fondoApp(){
-    final gradiente = Container(
+  Widget _crearImagen(BuildContext context) {
+    return Container(
       width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: FractionalOffset(0.0, 0.6),
-          end: FractionalOffset(0.0, 1.0),
-          colors: [
-            Color.fromRGBO(148, 196, 254, 1.0),
-            Color.fromRGBO(0, 132, 170, 1.0)
-          ]
-        )
+      child: GestureDetector(
+        onTap: ()=> Navigator.pushNamed(context, 'scroll'),
+        child: 
+        Image.asset('assets/contacto.png',height: 100.0, 
+          fit: BoxFit.contain,),
+
+
+     
+         
+        ),
+      );
+    
+  }
+  Widget _crearTitulo() {
+    return SafeArea(
+      child: Container(
+       
+        color: Color.fromRGBO(0, 0, 255, 0),
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+   
       ),
     );
-    final cajaRosa = Transform.rotate(
-      angle: -pi / 5.0,
-      // child: Container(
-      //   height: 360.0,
-      //   width: 360.0,
-      //   decoration: BoxDecoration(
-      //     borderRadius: BorderRadius.circular(80.0),
-      //     gradient: LinearGradient(
-      //       colors: [
-      //         Colors.blue[600],
-      //       ]
-      //     )
-      //   ),
-      // )
-    );
-    
-    return Form(
+  }
+
+    Widget _formulario(){
+      
+      return Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+
+        
         children: <Widget>[
           TextFormField(
             decoration: const InputDecoration(
@@ -76,6 +113,61 @@ class _ContactoState extends State<Contacto> {
               return null;
             },
           ),
+
+          TextFormField(
+          decoration: const InputDecoration(
+            hintText: 'Rut',
+            
+          ),
+          validator: (value) {
+            if (value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+        ),
+
+        TextFormField(
+        decoration: const InputDecoration(
+          hintText: 'Email',
+          
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter some text';
+          }
+          return null;
+        },
+      ),
+          TextFormField(
+          decoration: const InputDecoration(
+            hintText: 'Reingresar email',
+            
+          ),
+          validator: (value) {
+            if (value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+        ),
+  
+          TextFormField(
+            maxLines: 4,
+            decoration: const InputDecoration(
+            hintText: 'Mensaje',
+          
+
+            
+          ),
+          validator: (value) {
+            if (value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+        ),
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: RaisedButton(
@@ -93,74 +185,43 @@ class _ContactoState extends State<Contacto> {
       ),
   );
   }
+}
+class MySelectionItem extends StatelessWidget {
+  final String title;
+  final bool isForList;
 
-  //   Widget _bottomNavigationBar(BuildContext context){
-    
-  //   return Theme(
-  //     data:Theme.of(context).copyWith(
-  //       canvasColor: Color.fromRGBO(0, 134, 175, 0.8),
-  //       primaryColor: Color.fromRGBO(255, 255, 0, 1.0),
-        
-  //       textTheme: Theme.of(context).textTheme
-  //       .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(255, 255, 0, 1.0)))
-  //     ),
+  const MySelectionItem({Key key, this.title, this.isForList = true})
+      : super(key: key);
 
-  //     child: BottomNavigationBar(
- 
-  //       selectedFontSize:12.0,
-        
-  //       unselectedFontSize: 12.0,
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 60.0,
+      child: isForList
+          ? Padding(
+              child: _buildItem(context),
+              padding: EdgeInsets.all(10.0),
+            )
+          : Card(
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              child: Stack(
+                children: <Widget>[
+                  _buildItem(context),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(Icons.arrow_drop_down),
+                  )
+                ],
+              ),
+            ),
+    );
+  }
 
-  //       items: [
-    
-  //         BottomNavigationBarItem(
-  //           icon: Icon(Icons.search, size: 30,),
-  //           title: Text('Consultar Bien'),
-  //           ),
-  //         BottomNavigationBarItem(
-  //           icon: Icon(Icons.help_outline, size: 30,),
-  //           title: Text('¿Cómo funciona?')
-  //           ),
-  //         BottomNavigationBarItem(
-  //           icon: Icon(Icons.mail, size: 30,),
-  //           title: Text('Contacto')
-  //           ),
-        
-  //       ],
-
-  //       //onTap: _onTap,
-       
-  //     ),
-      
-
-
-  //   );
-
-
-
-  // }
-  //   _onTap(int index){
-  //   print(index);
-  //   setState(() {
-  //   index = index;
-  // });
-
-  //   if(index == 0){
-  //     Navigator.of(context)
-  //     .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-  //       return new ConsultaBien();
-  //     })
-  //     );
-  //   }
-  //   if(index == 1){
-  //     Navigator.of(context)
-  //     .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-  //       return new ComoFunciona();
-  //     })
-  //     );
-  //   }
-    
-
-   
-  // }
+  _buildItem(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      alignment: Alignment.center,
+      child: Text(title),
+    );
+  }
 }
