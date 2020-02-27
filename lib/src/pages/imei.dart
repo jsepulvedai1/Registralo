@@ -5,10 +5,12 @@ import 'package:device_info/device_info.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:imei_plugin/imei_plugin.dart';
+import 'package:local_auth/local_auth.dart';
 
 
 
-void main()=> runApp(new MaterialApp(home: new Imei()));
+void main()=> runApp(new MaterialApp(
+  home: new Imei()));
 
 
 
@@ -19,33 +21,48 @@ class Imei extends StatefulWidget {
 class _ImeiState extends State<Imei> {
 
   String imei;
-  String _platformImei = 'Unknown';
+  // String _platformImei = 'Unknown';
+  // bool _canCheckBiometrics;
+  // List<BiomentricType>
+
+  // Future<void> _authenticate()async{
+  //   bool authenticated = false;
+  //   try{
+  //     authenticated = await auth.authenticateWithBiometrics(
+  //       localizedReason: "Scan your fingerprint to authenticate",
+  //       useErrorDialogs: true,
+  //       stickyAuth: false,
+  //     );
+  //   }on PlatformException catch (e){
+  //     print(e);
+  //   }
+  // }
 
   @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
+  // void initState() {
+  //   super.initState();
+  //   initPlatformState();
+  // }
 
     // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformImei;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformImei = await ImeiPlugin.getImei( shouldShowRequestPermissionRationale: false );
-    } on PlatformException {
-      platformImei = 'Failed to get platform version.';
-    }
+  // Future<void> initPlatformState() async {
+  //   String platformImei;
+  //   // Platform messages may fail, so we use a try/catch PlatformException.
+  //   try {
+  //     platformImei = await ImeiPlugin.getImei( shouldShowRequestPermissionRationale: false );
+  //   } on PlatformException {
+  //     platformImei = 'Failed to get platform version.';
+  //   }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+  //   // If the widget was removed from the tree while the asynchronous platform
+  //   // message was in flight, we want to discard the reply rather than calling
+  //   // setState to update our non-existent appearance.
+  //   if (!mounted) return;
 
-     setState(() {
-      _platformImei = platformImei;
-    });
-  }
+  //    setState(() {
+  //     _platformImei = platformImei;
+  //   });
+  // }
 
   getDeviceInfo() async{
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
@@ -76,27 +93,34 @@ class _ImeiState extends State<Imei> {
       title: Text('Toma de datos del dispositivo'),
     ),
         body:  Center(
-          child: Text('Running on: $_platformImei\n'),
+         // child: Text('Running on: $_platformImei\n'),
       
           
-        //   child: new Column( 
+          child: new Column( 
           
-        //   mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
      
-        //   children: <Widget>[
+          children: <Widget>[
+
+            // Text('Current State:\n'),
+            // RaisedButton(
+            //   child: const Text('Authenticate'),
+            //   onPressed: _authenticate,
+
+            // )
             
-        //   new RaisedButton(onPressed: getDeviceInfo, child: new Text("Get info")),
-        //   new Text('ID:'),
-        //   new Text(info),
-        //   new Text(''),
-        //   new Text('Marca:'),
-        //   new Text(info5),
-        //   new Text(''),
-        //   new Text('Número de modelo:'),
-        //   new Text(info13),
+          new RaisedButton(onPressed: getDeviceInfo, child: new Text("Get info")),
+          new Text('ID:'),
+          new Text(info),
+          new Text(''),
+          new Text('Marca:'),
+          new Text(info5),
+          new Text(''),
+          new Text('Número de modelo:'),
+          new Text(info13),
          
          
-        // ],),
+        ],),
         
       )
     );

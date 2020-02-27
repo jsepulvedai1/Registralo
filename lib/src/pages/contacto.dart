@@ -40,27 +40,27 @@ class _ContactoState extends State<Contacto> {
             _crearTitulo(),
        
             _formulario(),
-             DirectSelect(
-                    itemExtent: 35.0,
-                    selectedIndex: selectedIndex1,
-                    child: MySelectionItem(
-                      isForList: false,
-                      title: elements1[selectedIndex1],
-                    ),
-                    onSelectedItemChanged: (index) {
-                      setState(() {
-                        selectedIndex1 = index;
-                      });
-                    },
-                    items: _buildItems1()),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0, top: 20.0),
-                  child: Text(
-                    "Search our database by name",
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.w500),
-                  ),
-                ),
+            //  DirectSelect(
+            //         itemExtent: 35.0,
+            //         selectedIndex: selectedIndex1,
+            //         child: MySelectionItem(
+            //           isForList: false,
+            //           title: elements1[selectedIndex1],
+            //         ),
+            //         onSelectedItemChanged: (index) {
+            //           setState(() {
+            //             selectedIndex1 = index;
+            //           });
+            //         },
+            //         items: _buildItems1()),
+            //     Padding(
+            //       padding: const EdgeInsets.only(left: 10.0, top: 20.0),
+            //       child: Text(
+            //         "Search our database by name",
+            //         style: TextStyle(
+            //             color: Colors.grey, fontWeight: FontWeight.w500),
+            //       ),
+            //     ),
           ],
         ),
       )
