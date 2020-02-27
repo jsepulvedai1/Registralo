@@ -1,34 +1,26 @@
-
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 //import 'package:/Animation/FadeAnimation.dart';
 import 'package:disenos/src/pages/Animation/FadeAnimation.dart';
 
-
-
-
 String username='';
 class SingInOne extends StatefulWidget {
-
-
   @override
-  _SingInOne createState(){
+  _SingInOne createState(){ 
     return new _SingInOne();
   }
 }
 
 class _SingInOne extends State<SingInOne> {
-
 TextEditingController user=new TextEditingController();
 TextEditingController pass=new TextEditingController();
 
 String msg='';
 
 Future<List> _login() async {
-  final response = await http.post("http://192.168.43.41/dashboard/my_site/get_data.php", body: {
+  final response = await http.post("http://10.171.0.121//dashboard/my_site/get_data.php", body: {
     "username": user.text,
     "password": pass.text,
   });
@@ -55,7 +47,6 @@ Future<List> _login() async {
 
   return datauser;
 }
-
 
 @override
   Widget build(BuildContext context) {
