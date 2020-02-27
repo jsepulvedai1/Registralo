@@ -24,6 +24,11 @@ dependencies:
   direct_select: "^1.0.0"
   location: ^2.5.0
   simple_animations: ^1.3.7
+  geolocator: ^5.1.5
+  android_multiple_identifier: ^1.0.3
+  device_info: "^0.2.0"
+  device_id: ^0.2.0
+  imei_plugin: ^1.1.6
 
 
 

@@ -4,9 +4,8 @@ import 'package:flutter/rendering.dart';
 import 'package:disenos/src/pages/repository.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import 'package:location/location.dart';
-import 'package:flutter/services.dart';
 import 'dart:convert';
+import 'package:geolocator/geolocator.dart';
 
 
 class Home extends StatefulWidget {
@@ -22,125 +21,108 @@ class _HomeState extends State<Home> {
   String _selectedState = "Selcione un Categoria";
   String _selectedLGA = "marca ..";
 
-  Map<String,double> currentLocation = new Map();
-  StreamSubscription<Map<String,double>> locationSubscription;
+  String _locationMessage = ""; 
+  void _getCurrentLocation() async {
+    print('saa');
+   final position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print('3333');  
+    print(position);
+    setState(() {
+      _locationMessage = "${position.latitude}, ${position.longitude}";
+      print(_locationMessage);
+      print('----');
+    });
+  }
 
-  Location location = new Location();
-  String error;
-    
-    
-      @override
-      void initState() {
-        _states = List.from(_states)..addAll(repo.getStates());
-        super.initState();
+  @override
+  void initState() {
+    _states = List.from(_states)..addAll(repo.getStates());
+    super.initState();
+  }
 
-        //Default variables set is 0
-        currentLocation['latitude'] = 0.0;
-        currentLocation['longitude'] = 0.0;
-
-         initPlatformState();
-          locationSubscription = location.onLocationChanged.listen((Map<String,double> result){
-            setState(() {
-             currentLocation = result; 
-            });  
-          });
-      }
-    
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Consultar Bien"),
-            elevation: 0.1,
-          ),
-          body: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
-                child: Column(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Consultar Bien"),
+        elevation: 0.1,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+            child: Column(
+              
+            children: <Widget>[
+              DropdownButton<String>(
+                isExpanded: true,
+                items: _states.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(dropDownStringItem),
+                  );
+                }).toList(),
+                onChanged: (value) => _onSelectedState(value),
+                value: _selectedState,
+              ),
+              DropdownButton<String>(
+                isExpanded: true,
+                items: _lgas.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(dropDownStringItem),
+                  );
                   
-                children: <Widget>[
-                  DropdownButton<String>(
-                    isExpanded: true,
-                    items: _states.map((String dropDownStringItem) {
-                      return DropdownMenuItem<String>(
-                        value: dropDownStringItem,
-                        child: Text(dropDownStringItem),
-                      );
-                    }).toList(),
-                    onChanged: (value) => _onSelectedState(value),
-                    value: _selectedState,
-                  ),
-                  DropdownButton<String>(
-                    isExpanded: true,
-                    items: _lgas.map((String dropDownStringItem) {
-                      return DropdownMenuItem<String>(
-                        value: dropDownStringItem,
-                        child: Text(dropDownStringItem),
-                      );
-                      
-                    }).toList(),
-                    // onChanged: (value) => print(value),
-                    onChanged: (value) => _onSelectedLGA(value),
-                    value: _selectedLGA,
-                   
-                  ),
-                  
-                  Center(
-                      child: RaisedButton(
-                              child: Text("Consultar"),
-    
-                                onPressed: (){
-                                   var rr =_login('javier','123');
-                                //Navigator.pop(context); 
-
-                                Text('Lat/Lng:${currentLocation['latitude']}/${currentLocation['longitude']}',style: 
-                                
-                                TextStyle(fontSize: 20.0, color: Colors.blueAccent),);
-                              },
-                            ),
-                
-                  )
-                  
-                ],
-                
+                }).toList(),
+                // onChanged: (value) => print(value),
+                onChanged: (value) => _onSelectedLGA(value),
+                value: _selectedLGA,
+               
               ),
               
-            ),
+              Center(
+                  child: RaisedButton(
+                    child: Text('Consultar'),
+
+                      onPressed: (){
+                          //var rr =_login('javier','123');
+                          print('ksakk');
+                          _getCurrentLocation();
+                          
+                          
+                      //Navigator.pop(context); 
+                    },
+                    
+                    
+                          
+                        ),
+                        
+
+                        
+                        
+            
+              )
+              
+            ],
+            
           ),
-        );
-      }
-    
-      void _onSelectedState(String value) {
-        setState(() {
-          _selectedLGA = "Choose ..";
-          _lgas = ["Choose .."];
-          _selectedState = value;
-          _lgas = List.from(_lgas)..addAll(repo.getLocalByState(value));
-        });
-      }
-    
-      void _onSelectedLGA(String value) {
-        setState(() => _selectedLGA = value);
-      }
-    
-      void initPlatformState() async {
-        Map<String,double> my_location;
-        try{
-          my_location = await location.getLocation;
-          error="";
-        }on PlatformException catch(e){
-          if(e.code == 'PERMISSION_DENIED')
-            error = 'Permission denied';
-          else if(e.code == 'PERMISSION_DENIED_NEVER_ASK')
-            error = 'Permission denied - please ask the user to enable it from the app settings';
-          my_location = null;
-        }
+          
+        ),
+      ),
+    );
+  }
 
-        setState(() {
-          currentLocation = my_location;
-        });
+  void _onSelectedState(String value) {
+    setState(() {
+      _selectedLGA = "Choose ..";
+      _lgas = ["Choose .."];
+      _selectedState = value;
+      _lgas = List.from(_lgas)..addAll(repo.getLocalByState(value));
+    });
+  }
 
-      }
+  void _onSelectedLGA(String value) {
+    setState(() => _selectedLGA = value);
+  }
 }
 
 Future<List> _login(user,pass) async {
