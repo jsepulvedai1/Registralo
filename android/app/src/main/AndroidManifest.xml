@@ -2,11 +2,13 @@
     package="com.example.disenos">
 
 
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that

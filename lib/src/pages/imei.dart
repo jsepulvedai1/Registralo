@@ -1,128 +1,119 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:device_info/device_info.dart';
+
+// Copyright 2017 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// ignore_for_file: public_member_api_docs
 
 import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:imei_plugin/imei_plugin.dart';
 import 'package:local_auth/local_auth.dart';
 
-
-
-void main()=> runApp(new MaterialApp(
-  home: new Imei()));
-
-
+void main() {
+  runApp(Imei());
+}
 
 class Imei extends StatefulWidget {
-  @override 
-  _ImeiState createState() => _ImeiState(); 
-}
-class _ImeiState extends State<Imei> {
-
-  String imei;
-  // String _platformImei = 'Unknown';
-  // bool _canCheckBiometrics;
-  // List<BiomentricType>
-
-  // Future<void> _authenticate()async{
-  //   bool authenticated = false;
-  //   try{
-  //     authenticated = await auth.authenticateWithBiometrics(
-  //       localizedReason: "Scan your fingerprint to authenticate",
-  //       useErrorDialogs: true,
-  //       stickyAuth: false,
-  //     );
-  //   }on PlatformException catch (e){
-  //     print(e);
-  //   }
-  // }
-
   @override
-  // void initState() {
-  //   super.initState();
-  //   initPlatformState();
-  // }
+  _ImeiState createState() => _ImeiState();
+}
 
-    // Platform messages are asynchronous, so we initialize in an async method.
-  // Future<void> initPlatformState() async {
-  //   String platformImei;
-  //   // Platform messages may fail, so we use a try/catch PlatformException.
-  //   try {
-  //     platformImei = await ImeiPlugin.getImei( shouldShowRequestPermissionRationale: false );
-  //   } on PlatformException {
-  //     platformImei = 'Failed to get platform version.';
-  //   }
+class _ImeiState extends State<Imei> {
+  final LocalAuthentication auth = LocalAuthentication();
+  bool _canCheckBiometrics;
+  List<BiometricType> _availableBiometrics;
+  String _authorized = 'Not Authorized';
+  bool _isAuthenticating = false;
 
-  //   // If the widget was removed from the tree while the asynchronous platform
-  //   // message was in flight, we want to discard the reply rather than calling
-  //   // setState to update our non-existent appearance.
-  //   if (!mounted) return;
-
-  //    setState(() {
-  //     _platformImei = platformImei;
-  //   });
-  // }
-
-  getDeviceInfo() async{
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-
-    var brand=androidInfo.id;
-    var brand5=androidInfo.brand;
-    var brand13=androidInfo.model;
+  Future<void> _checkBiometrics() async {
+    bool canCheckBiometrics;
+    try {
+      canCheckBiometrics = await auth.canCheckBiometrics;
+    } on PlatformException catch (e) {
+      print(e);
+    }
+    if (!mounted) return;
 
     setState(() {
-      info=brand;
-      info5=brand5;
-      info13=brand13;
+      _canCheckBiometrics = canCheckBiometrics;
     });
   }
-  String info="";
-  String info5="";
-  String info13="";
 
+  Future<void> _getAvailableBiometrics() async {
+    List<BiometricType> availableBiometrics;
+    try {
+      availableBiometrics = await auth.getAvailableBiometrics();
+    } on PlatformException catch (e) {
+      print(e);
+    }
+    if (!mounted) return;
 
-  
-@override
+    setState(() {
+      _availableBiometrics = availableBiometrics;
+    });
+  }
 
+  Future<void> _authenticate() async {
+    bool authenticated = false;
+    try {
+      setState(() {
+        _isAuthenticating = true;
+        _authorized = 'Authenticating';
+      });
+      authenticated = await auth.authenticateWithBiometrics(
+          localizedReason: 'Scan your fingerprint to authenticate',
+          useErrorDialogs: true,
+          stickyAuth: true);
+      setState(() {
+        _isAuthenticating = false;
+        _authorized = 'Authenticating';
+      });
+    } on PlatformException catch (e) {
+      print(e);
+    }
+    if (!mounted) return;
+
+    final String message = authenticated ? 'Authorized' : 'Not Authorized';
+    setState(() {
+      _authorized = message;
+    });
+  }
+
+  void _cancelAuthentication() {
+    auth.stopAuthentication();
+  }
+
+  @override
   Widget build(BuildContext context) {
-
-    
-    return new Scaffold (appBar: new AppBar(
-      title: Text('Toma de datos del dispositivo'),
-    ),
-        body:  Center(
-         // child: Text('Running on: $_platformImei\n'),
-      
-          
-          child: new Column( 
-          
-          mainAxisAlignment: MainAxisAlignment.center,
-     
-          children: <Widget>[
-
-            // Text('Current State:\n'),
-            // RaisedButton(
-            //   child: const Text('Authenticate'),
-            //   onPressed: _authenticate,
-
-            // )
-            
-          new RaisedButton(onPressed: getDeviceInfo, child: new Text("Get info")),
-          new Text('ID:'),
-          new Text(info),
-          new Text(''),
-          new Text('Marca:'),
-          new Text(info5),
-          new Text(''),
-          new Text('Número de modelo:'),
-          new Text(info13),
-         
-         
-        ],),
-        
-      )
-    );
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: ConstrainedBox(
+          constraints: const BoxConstraints.expand(),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text('Can check biometrics: $_canCheckBiometrics\n'),
+                RaisedButton(
+                  child: const Text('Check biometrics'),
+                  onPressed: _checkBiometrics,
+                ),
+                Text('Available biometrics: $_availableBiometrics\n'),
+                RaisedButton(
+                  child: const Text('Get available biometrics'),
+                  onPressed: _getAvailableBiometrics,
+                ),
+                Text('Current State: $_authorized\n'),
+                RaisedButton(
+                  child: Text(_isAuthenticating ? 'Cancel' : 'Authenticate'),
+                  onPressed:
+                      _isAuthenticating ? _cancelAuthentication : _authenticate,
+                )
+              ])),
+    ));
   }
 }

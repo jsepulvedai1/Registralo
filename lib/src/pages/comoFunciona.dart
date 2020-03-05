@@ -45,7 +45,7 @@ class ComoFunciona extends StatelessWidget{
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('¿Cómo funciona?', style: estiloTitulo ),
+                  Image.asset('assets/comoFunciona.png'),
                   SizedBox( height: 7.0 ),
            
                 ],

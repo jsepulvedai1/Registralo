@@ -46,6 +46,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Consultar Bien"),
         elevation: 0.1,
+        backgroundColor: Color.fromRGBO(73, 190, 226, 1.0),
       ),
       body: SingleChildScrollView(
         child: Container(
