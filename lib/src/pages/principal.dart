@@ -28,7 +28,13 @@ class _BotonesPage extends State<BotonesPage> {
     return Scaffold(
       appBar: AppBar(
         
-        title: Image.asset('assets/appbar.png', fit: BoxFit.cover, alignment: Alignment.centerRight,),
+        flexibleSpace: Image(
+          image: AssetImage('assets/appbar2.png'), 
+          fit: BoxFit.cover
+    
+
+          ),
+        backgroundColor: Color.fromRGBO(33, 150, 243, 1.0),
         actions: <Widget>[
             // action button
             IconButton(
@@ -145,7 +151,7 @@ class _BotonesPage extends State<BotonesPage> {
     
     return Theme(
       data:Theme.of(context).copyWith(
-        canvasColor: Color.fromRGBO(0, 134, 175, 0.8),
+        canvasColor: Color.fromRGBO(73, 190, 226, 1.0),
         primaryColor: Color.fromRGBO(255, 255, 0, 1.0),
         
         textTheme: Theme.of(context).textTheme
@@ -153,7 +159,8 @@ class _BotonesPage extends State<BotonesPage> {
       ),
 
       child: BottomNavigationBar(
- 
+
+
         selectedFontSize:12.0,
         
         unselectedFontSize: 12.0,
