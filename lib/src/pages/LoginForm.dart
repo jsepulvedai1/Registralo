@@ -156,15 +156,13 @@ class _FormPageState extends State<FormPage> {
       
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
-         backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+
+        backgroundColor: Color.fromRGBO(140, 208, 242, 1),
      
         key: scaffoldKey,
         
         body: 
-        Container(
-           color: Color.fromRGBO(255, 255, 255, 1), 
-           height: 600,
-          child:
+      
         SingleChildScrollView(
           child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -295,7 +293,7 @@ class _FormPageState extends State<FormPage> {
           ),
         )
         )
-        ),
+        
   
         )
         );
