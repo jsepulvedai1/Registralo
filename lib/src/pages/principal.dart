@@ -1,6 +1,7 @@
 import 'package:disenos/src/pages/comoFunciona.dart';
 import 'package:disenos/src/pages/consultaBien.dart';
 import 'package:disenos/src/pages/imei.dart';
+import 'package:disenos/src/pages/post_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:carousel_pro/carousel_pro.dart';
@@ -185,7 +186,10 @@ class _BotonesPage extends State<BotonesPage> {
           icon: Icon(Icons.person, size: 30,),
           title: Text('Contacto')
           ),
-      
+           BottomNavigationBarItem(
+            icon: Icon(Icons.mail, size: 30,),
+            title: Text('basico')
+            ),
         ],
 
         onTap: _onTap,
@@ -235,7 +239,19 @@ class _BotonesPage extends State<BotonesPage> {
       return new Imei();
    
     })
+    
     );
+    
+  }
+    if(index == 4){
+    Navigator.of(context)
+    .push(MaterialPageRoute<Null>(builder: (BuildContext context){
+      return new TabbedAppBarDemo();
+   
+    })
+    
+    );
+    
   }
     
 

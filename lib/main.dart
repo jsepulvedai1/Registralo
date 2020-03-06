@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         // 'scroll'  : (BuildContext context ) => ScrollPage()
         'botones' : (BuildContext context ) => BotonesPage(),
         'login'  : (BuildContext context) =>   SingInOne(),
+        //'poslogin': (BuildContext context) =>   TabbedAppBarDemo(),
         'inicio': (BuildContext context) => MyApp1(),
       },
     );

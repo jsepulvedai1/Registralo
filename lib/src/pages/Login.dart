@@ -18,13 +18,13 @@ TextEditingController user=new TextEditingController();
 TextEditingController pass=new TextEditingController();
 
 String msg='';
+String body1 ="<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"web:WSRegistralo\"><soapenv:Header/><soapenv:Body><web:usuario_validar soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"><usuario xsi:type=\"xsd:string\">?</usuario><clave xsi:type=\"xsd:string\">?</clave></web:usuario_validar></soapenv:Body></soapenv:Envelope>";
 
 Future<List> _login() async {
-  final response = await http.post("http://192.168.43.41//dashboard/my_site/get_data.php", body: {
+  final response = await http.post("https://soaex.spd.gov.cl/REGISTRALO//Service_Usuario.php?wsdl", body: {
     "username": user.text,
     "password": pass.text,
   });
-  print("no logea");
   var datauser = json.decode(response.body);
   print(datauser);
   if(datauser.length==0){
