@@ -52,7 +52,6 @@ class _HomeState extends State<Home> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
             child: Column(
-              
             children: <Widget>[
               DropdownButton<String>(
                 isExpanded: true,
