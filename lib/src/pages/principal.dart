@@ -7,6 +7,8 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'dart:math';
 import 'dart:ui';
 import 'contacto.dart';
+import 'package:disenos/src/pages/LoginForm.dart';
+
 
 class BotonesPage extends StatefulWidget {
 
@@ -222,7 +224,7 @@ class _BotonesPage extends State<BotonesPage> {
     if(index == 2){
       Navigator.of(context)
       .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-        return new Contacto();
+        return new LoginForm();
       })
       );
       

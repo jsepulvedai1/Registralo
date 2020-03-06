@@ -20,10 +20,11 @@ TextEditingController pass=new TextEditingController();
 String msg='';
 
 Future<List> _login() async {
-  final response = await http.post("http://10.171.0.121//dashboard/my_site/get_data.php", body: {
+  final response = await http.post("http://192.168.43.41//dashboard/my_site/get_data.php", body: {
     "username": user.text,
     "password": pass.text,
   });
+  print("no logea");
   var datauser = json.decode(response.body);
   print(datauser);
   if(datauser.length==0){
