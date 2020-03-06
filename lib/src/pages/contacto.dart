@@ -38,7 +38,7 @@ class _ContactoState extends State<Contacto> {
           children: <Widget>[
             _crearImagen(context),
             _crearTitulo(),
-       
+            
             _formulario(),
             //  DirectSelect(
             //         itemExtent: 35.0,

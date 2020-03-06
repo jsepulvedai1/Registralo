@@ -93,22 +93,28 @@ class ChoicePage extends StatelessWidget {
 
 Widget _tabla(){
     
-    return Table(
-      border: TableBorder.all(width: 1.0, color: Colors.black),
-      children: [
-        TableRow(children:[
-          TableCell(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                new Text('ID'),
-                new Text(['id'].toString()),
-              ]
-            )
-          )
-        ]),
-      ],
-    );
+        return  TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Enter your username'
+                  ),
+                  );
+    // return Table(
+    //   border: TableBorder.all(width: 1.0, color: Colors.black),
+    //   children: [
+    //     TableRow(children:[
+    //       TableCell(
+    //         child: Row(
+    //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //           children: <Widget>[
+           
+    //             new Text('ID'),
+    //             new Text(['id'].toString()),
+    //           ]
+    //         )
+    //       )
+    //     ]),
+    //   ],
+    // );
       
   }
 
@@ -122,6 +128,10 @@ Widget _tabla(){
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
+
+
+
+
                 new Text('ID3'),
                 new Text(['id2'].toString()),
               ]
