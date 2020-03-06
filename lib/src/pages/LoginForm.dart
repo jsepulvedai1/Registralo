@@ -1,9 +1,45 @@
+
 import 'package:flutter/material.dart';
 import 'package:direct_select/direct_select.dart';
 
-void main() => runApp(new LoginForm());
+
+class FormPage extends StatefulWidget {
+  FormPage(): super();
+  
+  
+  @override
+  _FormPageState createState() => new _FormPageState();
+ 
+}
+class Issue {
+  int id;
+  String name;
+
+  Issue(this.id, this.name);
+
+  static List<Issue> getIssues() {
+    return <Issue>[
+      Issue(0, 'Seleccione asunto...'),
+      Issue(1, 'Activación de cuenta REGISTRALO.CL'),
+      Issue(2, 'Cambio de Estado de Bien'),
+      Issue(3, 'Consulta por un bien que deseo adquirir'),
+      Issue(4, 'Funcionamiento del sistema REGISTRALO.CL'),
+      Issue(5, 'Ingreso a cuenta de sistema'),
+      Issue(6, 'Inscripción de un bien con marca de no registrada de una categoría de la lista'),
+      Issue(7, 'Inscripción en el sistema REGISTRALO.CL'),
+      Issue(8, 'Recuperación clave'),
+      Issue(9, 'Registro de un bien'),
+      Issue(10, 'Otro asunto'),
+
+    ];
+  }
+
+
+}
+
 
 class LoginForm extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -14,41 +50,60 @@ class LoginForm extends StatelessWidget {
   }
 }
 
-class FormPage extends StatefulWidget {
-  @override
-  _FormPageState createState() => new _FormPageState();
-}
+
+
+
 
 class _FormPageState extends State<FormPage> {
+  List<Issue> _issues = Issue.getIssues();
+  List<DropdownMenuItem<Issue>> _dropdownMenuItems;
+  Issue _selectedIssue;
+
+  
+  @override
+  void initState() {
+    _dropdownMenuItems = buildDropdownMenuItems(_issues);
+    _selectedIssue = _dropdownMenuItems[0].value;
+    super.initState();
+  }
+  List<DropdownMenuItem<Issue>> buildDropdownMenuItems(List issues) {
+    List<DropdownMenuItem<Issue>> items = List();
+    for (Issue issue in issues) {
+      items.add(
+        DropdownMenuItem(
+          value: issue,
+          child: Text(issue.name),
+        ),
+      );
+    }
+    return items;
+  }
+
+  onChangeDropdownItem(Issue selectedIssue) {
+    setState(() {
+      _selectedIssue = selectedIssue;
+    });
+  }
+
+
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
   TextEditingController _textFieldController = TextEditingController();
   TextEditingController _textFieldController2 = TextEditingController();
   TextEditingController _textFieldController3 = TextEditingController();
   TextEditingController _textFieldController4 = TextEditingController();
+  TextEditingController _textFieldController5 = TextEditingController();
   
-  final elements = [
-    "Seleccione...",
-    "Activación de cuenta REGISTRALO.CL",
-    "Cambio de Estado de Bien",
-    "Consulta por un bien que deseo adquirir",
-    "Funcionamiento del sistema REGISTRALO.CL",
-    "Ingreso a cuenta de sistema",
-    "Inscripción de un bien con marca de no registrada de una categoría de la lista",
-    "Inscripción en el sistema REGISTRALO.CL",
-    "Recuperación clave",
-    "Registro de un bien",
-    "Otro asunto"
-  ];
+
   int selectedIndex = 0;
 
-    List<Widget> _buildItems1() {
-    return elements
-        .map((val) => MySelectionItem(
-              title: val,
-            ))
-        .toList();
-  }
+  //   List<Widget> _buildItems1() {
+  //   return elements
+  //       .map((val) => MySelectionItem(
+  //             title: val,
+  //           ))
+  //       .toList();
+  // }
 
 
   String _email;
@@ -56,11 +111,7 @@ class _FormPageState extends State<FormPage> {
   String _name;
   String _rut;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+
 
   @override
   void dispose() {
@@ -87,6 +138,7 @@ class _FormPageState extends State<FormPage> {
       _textFieldController2.text = "";
       _textFieldController3.text = "";
       _textFieldController4.text = "";
+       _textFieldController5.text = "";
     });
     
   }
@@ -100,16 +152,27 @@ class _FormPageState extends State<FormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+    return new MaterialApp(
+      
+      debugShowCheckedModeBanner: false,
+      home: new Scaffold(
+         backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+     
         key: scaffoldKey,
         
-        body: SingleChildScrollView(
+        body: 
+        Container(
+           color: Color.fromRGBO(255, 255, 255, 1), 
+           height: 600,
+          child:
+        SingleChildScrollView(
           child: Padding(
           padding: const EdgeInsets.all(20.0),
+
           child: new Form(
            
             key: formKey,
+            
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -145,30 +208,16 @@ class _FormPageState extends State<FormPage> {
                 //   }
                 //   return null;
                 // ),
+      
+                new  DropdownButton( 
+                    //controller: _textFieldController4,
+                    value: _selectedIssue,
+                    items: _dropdownMenuItems,
+                    onChanged: onChangeDropdownItem,
+                    isExpanded: true,
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 0.0),
-                  child: Text(
-                    "Asunto",
-                    style: TextStyle(
-                        color: Color.fromRGBO(64, 95, 111, 1), fontWeight: FontWeight.w500),
                   ),
-                ),
-                DirectSelect(
-                    itemExtent: 40.0,
-                    selectedIndex: selectedIndex,
-                    child: MySelectionItem(
-                      isForList: false,
-                      title: elements[selectedIndex],
-                    ),
-                    onSelectedItemChanged: (index) {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
-                    items: _buildItems1()),
-            
-  
+           
                 new  TextFormField(
                   controller: _textFieldController4,
                   decoration: new InputDecoration(labelText: "Mensaje:", helperText: '500 caracteres máximo',),
@@ -246,7 +295,11 @@ class _FormPageState extends State<FormPage> {
           ),
         )
         )
+        ),
+  
+        )
         );
+    
   }
 }
   Widget _crearImagen(BuildContext context) {
