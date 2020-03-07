@@ -35,6 +35,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       break;
 
       case 1:
+      print('registrar bien');
       return _registrarBien;
       break;
 
