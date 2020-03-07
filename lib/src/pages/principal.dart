@@ -1,3 +1,4 @@
+import 'package:disenos/src/pages/NavBarPostLogin.dart';
 import 'package:disenos/src/pages/comoFunciona.dart';
 import 'package:disenos/src/pages/consultaBien.dart';
 import 'package:disenos/src/pages/imei.dart';
@@ -246,7 +247,7 @@ class _BotonesPage extends State<BotonesPage> {
     if(index == 4){
     Navigator.of(context)
     .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-      return new TabbedAppBarDemo();
+      return new BottomNavBar();
    
     })
     
