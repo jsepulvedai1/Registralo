@@ -10,6 +10,8 @@ import 'dart:math';
 import 'dart:ui';
 import 'contacto.dart';
 import 'package:disenos/src/pages/LoginForm.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 
 
 class BotonesPage extends StatefulWidget {
@@ -22,14 +24,16 @@ class BotonesPage extends StatefulWidget {
 }
 
 class _BotonesPage extends State<BotonesPage> {
-  
-  
+
+
+
   @override
   Widget build(BuildContext context) {
  
  
 
     return Scaffold(
+
       appBar: AppBar(
         
         flexibleSpace: Image(
@@ -38,7 +42,8 @@ class _BotonesPage extends State<BotonesPage> {
     
 
           ),
-        backgroundColor: Color.fromRGBO(33, 150, 243, 1.0),
+
+       
         actions: <Widget>[
             // action button
             IconButton(
@@ -47,6 +52,26 @@ class _BotonesPage extends State<BotonesPage> {
             ),
         ]
       ),
+
+        bottomNavigationBar: CurvedNavigationBar(
+      
+        height: 50.0,
+        items:<Widget> [
+        Icon(Icons.search, size: 30, color: Color.fromRGBO(0, 164, 214, 1),),
+        Icon(Icons.help_outline, size: 30, color: Color.fromRGBO(0, 164, 214, 1)),
+        Icon(Icons.mail, size: 30, color: Color.fromRGBO(0, 164, 214, 1)),
+        Icon(Icons.person, size: 30, color: Color.fromRGBO(0, 164, 214, 1)),
+        Icon(Icons.mail, size: 30, color: Color.fromRGBO(0, 164, 214, 1)),
+        ],
+        
+        color: Colors.white,
+        buttonBackgroundColor: Color.fromRGBO(255,255,255,1),
+        backgroundColor: Color.fromRGBO( 120, 200, 240, 1.0),
+        animationCurve: Curves.easeOutBack,
+        animationDuration: Duration(milliseconds: 1000),
+        onTap: _onTap,
+        ),
+
       body: 
       Stack(
      
@@ -62,26 +87,10 @@ class _BotonesPage extends State<BotonesPage> {
           ),
       ],
       ),
-      bottomNavigationBar: _bottomNavigationBar(context)
+   
 
     );
   }
-//   Widget _pagina2() {
-//   return SafeArea(
-//     child: Container(
-//       padding: EdgeInsets.all(20.0),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: <Widget>[
-//           Text('Registralo.cl', style: TextStyle( color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold )),
-//           SizedBox( height: 20.0 ),
-//           Text('Para registrar bienes y consultar mayor detalle de bienes registrados en el sistema, debes inscribirte, completando en el icono REGISTRATE,', style: TextStyle( color: Colors.white, fontSize: 18.0 )),
-//         ],
-//       ),
-//     ),
-//   );
-// }
-
 
 
 
@@ -95,25 +104,13 @@ class _BotonesPage extends State<BotonesPage> {
           end: FractionalOffset(0.0, 1.0),
           colors: [
             Color.fromRGBO(120, 200, 240, 1.0),
-            Color.fromRGBO(128, 208, 250, 2.0)
+            Color.fromRGBO(120, 200, 240, 1.0)
           ]
         )
       ),
     );
     final cajaRosa = Transform.rotate(
       angle: -pi / 5.0,
-      // child: Container(
-      //   height: 360.0,
-      //   width: 360.0,
-      //   decoration: BoxDecoration(
-      //     borderRadius: BorderRadius.circular(80.0),
-      //     gradient: LinearGradient(
-      //       colors: [
-      //         Colors.blue[600],
-      //       ]
-      //     )
-      //   ),
-      // )
     );
     
     return Stack(
@@ -151,59 +148,7 @@ class _BotonesPage extends State<BotonesPage> {
       ),
      );
     }
-  Widget _bottomNavigationBar(BuildContext context){
-    
-    return Theme(
-      data:Theme.of(context).copyWith(
-        canvasColor: Color.fromRGBO(73, 190, 226, 1.0),
-        primaryColor: Color.fromRGBO(255, 255, 0, 1.0),
-        
-        textTheme: Theme.of(context).textTheme
-        .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(255, 255, 0, 1.0)))
-      ),
 
-      child: BottomNavigationBar(
-
-
-        selectedFontSize:12.0,
-        
-        unselectedFontSize: 12.0,
-
-        items: [
-    
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search, size: 30,),
-            title: Text(''),
-            ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help_outline, size: 30,),
-            title: Text('¿Cómo funciona?')
-            ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mail, size: 30,),
-            title: Text('Contacto')
-            ),
-          BottomNavigationBarItem(
-          icon: Icon(Icons.person, size: 30,),
-          title: Text('Contacto')
-          ),
-           BottomNavigationBarItem(
-            icon: Icon(Icons.mail, size: 30,),
-            title: Text('basico')
-            ),
-        ],
-
-        onTap: _onTap,
-       
-      ),
-      
-
-
-    );
-
-
-
-  }
     //Index TabBar 
 
   _onTap(int index){
@@ -262,4 +207,3 @@ class _BotonesPage extends State<BotonesPage> {
 
 
 }
-

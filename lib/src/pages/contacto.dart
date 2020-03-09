@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:direct_select/direct_select.dart';
-
 
 class Contacto extends StatefulWidget{
 
@@ -14,21 +12,8 @@ class _ContactoState extends State<Contacto> {
 
   final estiloTitulo    = TextStyle( color: Color.fromRGBO(255, 255, 0, 1),fontSize: 20.0, fontWeight: FontWeight.bold, backgroundColor: Color.fromRGBO(41, 51, 125, 1), );
   final _formKey = GlobalKey<FormState>();
-   final elements1 = [
-    "Breakfast",
-    "Lunch",
-    "2nd Snack",
-    "Dinner",
-    "3rd Snack",
-  ];
   int selectedIndex1 = 0;
-   List<Widget> _buildItems1() {
-    return elements1
-        .map((val) => MySelectionItem(
-              title: val,
-            ))
-        .toList();
-  }
+
   @override
   
   Widget build(BuildContext context) {
@@ -38,29 +23,8 @@ class _ContactoState extends State<Contacto> {
           children: <Widget>[
             _crearImagen(context),
             _crearTitulo(),
-            
             _formulario(),
-            //  DirectSelect(
-            //         itemExtent: 35.0,
-            //         selectedIndex: selectedIndex1,
-            //         child: MySelectionItem(
-            //           isForList: false,
-            //           title: elements1[selectedIndex1],
-            //         ),
-            //         onSelectedItemChanged: (index) {
-            //           setState(() {
-            //             selectedIndex1 = index;
-            //           });
-            //         },
-            //         items: _buildItems1()),
-            //     Padding(
-            //       padding: const EdgeInsets.only(left: 10.0, top: 20.0),
-            //       child: Text(
-            //         "Search our database by name",
-            //         style: TextStyle(
-            //             color: Colors.grey, fontWeight: FontWeight.w500),
-            //       ),
-            //     ),
+        
           ],
         ),
       )
@@ -75,9 +39,6 @@ class _ContactoState extends State<Contacto> {
         Image.asset('assets/contacto.png',height: 100.0, 
           fit: BoxFit.contain,),
 
-
-     
-         
         ),
       );
     
@@ -184,44 +145,5 @@ class _ContactoState extends State<Contacto> {
         ],
       ),
   );
-  }
-}
-class MySelectionItem extends StatelessWidget {
-  final String title;
-  final bool isForList;
-
-  const MySelectionItem({Key key, this.title, this.isForList = true})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60.0,
-      child: isForList
-          ? Padding(
-              child: _buildItem(context),
-              padding: EdgeInsets.all(10.0),
-            )
-          : Card(
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
-              child: Stack(
-                children: <Widget>[
-                  _buildItem(context),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(Icons.arrow_drop_down),
-                  )
-                ],
-              ),
-            ),
-    );
-  }
-
-  _buildItem(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      alignment: Alignment.center,
-      child: Text(title),
-    );
   }
 }

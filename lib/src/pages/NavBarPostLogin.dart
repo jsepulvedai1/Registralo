@@ -77,6 +77,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Icon(Icons.account_box, size: 30, color: Color.fromRGBO(0, 164, 214, 1)),
             Icon(Icons.email, size: 30, color: Color.fromRGBO(0, 164, 214, 1)),
           ],
+          
           color: Colors.white,
           buttonBackgroundColor: Color.fromRGBO(255,255,255,1),
           backgroundColor: Color.fromRGBO(140, 208, 242, 1),
@@ -94,6 +95,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           child: Center(
             child: _showPage,
           ),
-        ));
+        )
+        );
   }
 }
