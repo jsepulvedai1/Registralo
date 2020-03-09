@@ -27,14 +27,22 @@ class MisBienes  extends StatelessWidget {
       }
     }
 
+void actionTest() {
+    print('asdsad');
+  }
+
     class DetalleBienView extends StatelessWidget {
       @override
-      final post = 'post';
+      final test = 'Lorem ipsum dolor sit amet consectetur ';
+      final data;
+      DetalleBienView({this.data});
+      
 
       Widget build(BuildContext context) {
           return Scaffold(
+              backgroundColor: Color.fromRGBO(140, 208, 242, 1),
               appBar: AppBar(
-                  title: Text('Detalle'),
+                  title: Text('${data}'),
                   leading: new IconButton(
                     icon: new Icon(Icons.arrow_back, color: Colors.white),
                     onPressed: () => Navigator.of(context).pop(),
@@ -46,7 +54,10 @@ class MisBienes  extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Card(
-                        child: Column(
+                        child:Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 25 ),
+                  child: 
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             ListTile(
@@ -55,34 +66,45 @@ class MisBienes  extends StatelessWidget {
                             ),
                             ListTile(
                               title: Text("Estado Actual"),
-                              subtitle: Text("${post}"),
+                              subtitle: Text("Robado"),
                             ),
-                            ListTile(
+                             new SizedBox(
+                              
+                              width: 300.0,
+                              height: 120.0,
+                              child:   ListTile(
                               title: Text("Descripción del bien"),
-                              subtitle: Text(post),
+                              subtitle: Text(test+test+test),
                             ),
-                            ListTile(
-                              title: Text("Modificar Datos"),
-                              subtitle: Text("${post}"),
                             ),
-                                ListTile(
-                            title: Text("Descargar Cerficado"),
-                            subtitle: Text("${post}"),
-                          ),
-                                ListTile(
-                            title: Text("Cambiar Estado"),
-                            subtitle: Text("${post}"),
-                          ),
-                              ListTile(
-                              title: Text("Transferir"),
-                              subtitle: Text("${post}"),
+                          
+                            new SizedBox(
+                              
+                              width: 300.0,
+                              height: 60.0,
+                              child: new RaisedButton(
+                                child: new Text('Modificar Datos'),
+                                onPressed: actionTest,
+                              ),
                             ),
-                                ListTile(
-                              title: Text("Eliminar"),
-                              subtitle: Text("${post}"),
+                            new SizedBox(
+                              width: 300.0,
+                              height: 60.0,
+                              child: new RaisedButton(
+                                child: new Text('Descargar Cerficado'),
+                                onPressed: actionTest,
+                              ),
+                            ),
+                            new SizedBox(
+                              width: 300.0,
+                              height: 60.0,
+                              child: new RaisedButton(
+                                child: new Text('Cambiar Estado'),
+                                onPressed: actionTest,
+                              ),
                             ),
                           ],
-                        ),
+                        )),
                       ),
                     ],
                   ),
@@ -96,16 +118,9 @@ class MisBienes  extends StatelessWidget {
     // replace this function with the code in the examples
     Widget _myListView(BuildContext context) {
     
-
-      final europeanCountries = ['Albania', 'Andorra', 'Armenia', 'Austria', 
-              'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria',
-              'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
-              'France', 'Georgia', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland',
-              'Italy', 'Kazakhstan', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania',
-              'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro',
-              'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia',
-              'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 
-              'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom', 'Vatican City'];
+      final europeanCountries = ['HUAWEI P9', 'PS4', 'HUAWEI P9', 'HUAWEI P9', 
+              'HUAWEI P9', 'HUAWEI P9', 'HUAWEI P9', 'HUAWEI P9', 'Refrigerador',
+              ];
 
       return ListView.builder(
           itemCount: europeanCountries.length,
@@ -115,10 +130,15 @@ class MisBienes  extends StatelessWidget {
               leading: FlutterLogo(size: 56.0),
               title: Text(europeanCountries[index]),
               subtitle: Text('Here is a second line'),
-              trailing: Icon(Icons.more_vert),
+              trailing: Icon(Icons.chevron_right),
               onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => DetalleBienView()));
+                      context, MaterialPageRoute(
+                      builder: (context) => DetalleBienView(
+                      data: europeanCountries[index],
+                      )
+                      )
+                  );
               },
             ),
           );    
