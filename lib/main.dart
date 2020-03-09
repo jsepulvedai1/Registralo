@@ -1,9 +1,11 @@
+import 'package:disenos/src/pages/NavBarPostLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:disenos/src/pages/principal.dart';
 import 'package:disenos/src/pages/Login.dart';
 import 'package:disenos/src/pages/post_login.dart';
 import 'package:disenos/src/pages/splash2.dart';
+import 'package:disenos/src/bloc/provider.dart';
 
 
 
@@ -22,18 +24,20 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle( SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.transparent
     ));
-    return MaterialApp(
+    return Provider(child: 
+      MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños',
       initialRoute: 'inicio',
       routes: {
-        'basico'  : (BuildContext context ) => TabbedAppBarDemo(),
+        'basico'  : (BuildContext context ) => BottomNavBar(),
         // 'scroll'  : (BuildContext context ) => ScrollPage()
         'botones' : (BuildContext context ) => BotonesPage(),
-        'login'  : (BuildContext context) =>   SingInOne(),
+        'login'  : (BuildContext context) =>   TabbedAppBarDemo(),
         //'poslogin': (BuildContext context) =>   TabbedAppBarDemo(),
         'inicio': (BuildContext context) => MyApp1(),
       },
+      ),
     );
   }
  
