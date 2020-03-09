@@ -1,10 +1,11 @@
 import 'package:disenos/src/pages/ContactoPostLogin.dart';
 import 'package:disenos/src/pages/misDatos.dart';
+import 'package:disenos/src/pages/registrarBien.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:disenos/src/pages/consultaBienPostLogin.dart';
 import 'package:disenos/src/pages/misBienes.dart';
-import 'package:disenos/src/pages/registrarBien.dart';
+
 
 void main() => runApp(MaterialApp(home: BottomNavBar()));
 
@@ -35,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       break;
 
       case 1:
-      return _registrarBien;
+        return _registrarBien;
       break;
 
       case 2:
@@ -81,7 +82,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           buttonBackgroundColor: Color.fromRGBO(255,255,255,1),
           backgroundColor: Color.fromRGBO(140, 208, 242, 1),
           animationCurve: Curves.easeOutBack,
-         
+        
           animationDuration: Duration(milliseconds: 1000),
           onTap: (int tappedIndex) {
             setState(() {
