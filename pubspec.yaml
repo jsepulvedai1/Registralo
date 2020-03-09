@@ -36,8 +36,7 @@ dependencies:
   flutter_bloc: ^0.21.0
   curved_navigation_bar: ^0.3.2
   uuid: ^1.0.1
-  image_form_field:
-    path: ../
+  image_form_field: ^0.0.2
   
 
 

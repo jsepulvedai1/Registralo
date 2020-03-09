@@ -1,24 +1,27 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:image_form_field/image_form_field.dart';
 import 'utils/upload_button.dart';
 import 'utils/image_input_adapter.dart';
 import 'utils/bien_image_model.dart';
 
-class _RegristrarBien extends StatefulWidget {
-  _RegristrarBien(
+class RegristrarBien extends StatefulWidget {
+
+
+  RegristrarBien(
     this.existingImages
   );
-
   final List<BlogImage> existingImages;
 
   @override
-  State<StatefulWidget> createState() => _RegistrarBienState();
+  _RegristrarBienState createState() => _RegristrarBienState();
 }
-
-class _RegistrarBienState extends State<_RegristrarBien> {
+class _RegristrarBienState extends State<RegristrarBien> {
+  methodInPage2() => print("method in page 2");
   final _formKey = GlobalKey<FormState>();
   List<ImageInputAdapter> _images;
-
+  ImageInputAdapter images;
   void submit() {
     if( _formKey.currentState.validate() ) {
       _formKey.currentState.save();
@@ -64,7 +67,11 @@ class _RegistrarBienState extends State<_RegristrarBien> {
   @override
   Widget build(BuildContext context) {
     final bool shouldAllowMultiple = true;
-    return Scaffold(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 4,
+        child: Scaffold(
         backgroundColor: Color.fromRGBO(140, 208, 242, 1),
         appBar: AppBar(
           flexibleSpace: Image(
@@ -92,6 +99,7 @@ class _RegistrarBienState extends State<_RegristrarBien> {
                 )
                 // Add TextFormFields and RaisedButton here.
               ])),
-        ));
+        ))
+      ));
   }
 }

@@ -71,7 +71,7 @@ class UploadableImage {
   // s/o https://github.com/mdanics/fluttergram/blob/master/lib/upload_page.dart#L224
   /// Save image to FirebaseStorage bucket
   Future<UploadResponse> save() async {
-    final uuid = new Uuid().v1();
+    final uuid = new Uuid();
     final _refPath = "$storagePath/$uuid.jpg";
     //StorageReference ref = FirebaseStorage.instance.ref().child(_refPath);
     //StorageUploadTask uploadTask = ref.putFile(image);

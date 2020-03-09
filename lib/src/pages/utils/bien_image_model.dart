@@ -15,35 +15,16 @@ class BlogImage {
 
   static String get collectionPath => "blogImages";
 
-  // create() {
-  //   return Firestore.instance.collection(collectionPath).document().setData({
-  //     "storagePath" : storagePath,
-  //     "originalUrl" : originalUrl,
-  //     "bucketName" : bucketName
-  //   });
-  // }
+  create() {
+    return "";
+  }
 
-  // static Future<BlogImage> fromUrl(String url) async {
-  //   final images = await Firestore.instance.collection(collectionPath)
-  //     .where("originalUrl", isEqualTo: url)
-  //     .getDocuments();
+  static Future<BlogImage> fromUrl(String url) async {
 
-  //   if (images.documents.isNotEmpty) {
-  //     final i = images.documents.first.data;
+    return null;
+  }
 
-  //     return BlogImage(
-  //       storagePath: i["storagePath"],
-  //       originalUrl: i["originalUrl"],
-  //       bucketName: i["bucketName"],
-  //       id: images.documents.first.documentID
-  //     );
-  //   }
-
-  //   return null;
-  // }
-
-  // Future delete() async {
-  //   FirebaseStorage.instance.ref().child(storagePath).delete();
-  //   return Firestore.instance.collection(collectionPath).document(id).delete();
-  // }
+  Future delete() async {
+    return null;
+  }
 }
