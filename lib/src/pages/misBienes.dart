@@ -13,7 +13,6 @@ class MisBienes  extends StatelessWidget {
           ),
           home: Scaffold(
             backgroundColor: Color.fromRGBO(140, 208, 242, 1),
-            appBar: AppBar(title: Text('Mis Bienes')),
             body: MisBienesView(),
           ),
         );
@@ -118,8 +117,7 @@ void actionTest() {
     // replace this function with the code in the examples
     Widget _myListView(BuildContext context) {
     
-      final europeanCountries = ['HUAWEI P9', 'PS4', 'HUAWEI P9', 'HUAWEI P9', 
-              'HUAWEI P9', 'HUAWEI P9', 'HUAWEI P9', 'HUAWEI P9', 'Refrigerador',
+      final europeanCountries = ['HUAWEI P9',
               ];
 
       return ListView.builder(
@@ -127,7 +125,7 @@ void actionTest() {
           itemBuilder: (context, index) {
           return Card(
             child: ListTile(
-              leading: FlutterLogo(size: 56.0),
+              leading: Icon(Icons.phone_android),
               title: Text(europeanCountries[index]),
               subtitle: Text('Here is a second line'),
               trailing: Icon(Icons.chevron_right),
