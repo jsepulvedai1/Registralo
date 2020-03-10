@@ -5,6 +5,7 @@ class RegistrarBien  extends StatelessWidget {
   Widget build(BuildContext context) {
       return Scaffold(
       backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+    
    
       body: Container(   
         child: Column(
@@ -12,6 +13,8 @@ class RegistrarBien  extends StatelessWidget {
             _crearImagen(context),
           ],) ,
           )
+
+          
     );
   }
 

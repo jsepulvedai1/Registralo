@@ -63,10 +63,19 @@ class _HomeState extends State<Home> {
       // ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+          padding:  const EdgeInsets.all(12.0),
+
             child: Column(
             children: <Widget>[
               _crearImagen(context),
+
+              Card(
+              child:Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 25 ),
+              child: 
+                Column(
+                  children: <Widget>[
+
               DropdownButton<String>(
                 isExpanded: true,
                 items: _states.map((String dropDownStringItem) {
@@ -92,6 +101,7 @@ class _HomeState extends State<Home> {
                 value: _selectedLGA,
                
               ),
+                         ], ))),
               
               Center(
 
@@ -181,4 +191,3 @@ Future<List> _login(user,pass) async {
 
   return datauser;
 }
-

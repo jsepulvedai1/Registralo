@@ -87,7 +87,7 @@ class _BotonesPage extends State<BotonesPage> {
           ),
       ],
       ),
-   
+     // bottomNavigationBar: _bottomNavigationBar(context)
 
     );
   }
@@ -149,6 +149,40 @@ class _BotonesPage extends State<BotonesPage> {
      );
     }
 
+  //     Widget _bottomNavigationBar(BuildContext context){
+  //   return Theme(
+  //     data:Theme.of(context).copyWith(
+  //       canvasColor: Color.fromRGBO(0, 134, 175, 0.8),
+  //       primaryColor: Color.fromRGBO(255, 255, 0, 1.0),
+  //       textTheme: Theme.of(context).textTheme
+  //       .copyWith(caption: prefix0.TextStyle(color: Color.fromRGBO(255, 255, 0, 1.0)))
+  //     ),
+  //     child: BottomNavigationBar(
+  //       selectedFontSize:12.0,
+  //       unselectedFontSize: 12.0,
+  //       items: [
+  //         BottomNavigationBarItem(
+  //           icon: Icon(Icons.search, size: 30,),
+  //           title: Text(''),
+  //           ),
+  //         BottomNavigationBarItem(
+  //           icon: Icon(Icons.help_outline, size: 30,),
+  //           title: Text('¿Cómo funciona?')
+  //           ),
+  //         BottomNavigationBarItem(
+  //           icon: Icon(Icons.mail, size: 30,),
+  //           title: Text('Contacto')
+  //           ),
+  //         BottomNavigationBarItem(
+  //         icon: Icon(Icons.person, size: 30,),
+  //         title: Text('Contacto')
+  //         ),
+  //       ],
+  //       onTap: _onTap,
+  //     ),
+  //   );
+  // }
+
     //Index TabBar 
 
   _onTap(int index){
@@ -192,7 +226,7 @@ class _BotonesPage extends State<BotonesPage> {
     if(index == 4){
     Navigator.of(context)
     .push(MaterialPageRoute<Null>(builder: (BuildContext context){
-      return new BottomNavBar();
+      return new TabbedAppBarDemo();
    
     })
     
