@@ -13,7 +13,6 @@ class MisDatos  extends StatelessWidget {
           ),
           home: Scaffold(
             backgroundColor: Color.fromRGBO(140, 208, 242, 1),
-            appBar: AppBar(title: Text('Mis Datos')),
             body: MisBienesView(),
           ),
         );
@@ -31,6 +30,7 @@ final data = 'Lorem ipsum dolor sit amet consectetur ';
       return Scaffold(
           backgroundColor: Color.fromRGBO(140, 208, 242, 1),
           body: SingleChildScrollView(
+            
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -44,14 +44,14 @@ final data = 'Lorem ipsum dolor sit amet consectetur ';
                         children: <Widget>[
                           ListTile(
                             title: Text("Nombre"),
-                            subtitle: Text('Felipe Avello'),
+                            subtitle: Text('Juan Antonio Ruiz'),
                           ),
                             new SizedBox(
                             width: 300.0,
                             height: 120.0,
                             child:   ListTile(
                             title: Text("Email"),
-                            subtitle: Text('f.avello@gmail.com'),
+                            subtitle: Text('jruiz@gmail.com'),
                             ),
                           ),
                         ],

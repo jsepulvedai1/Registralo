@@ -163,9 +163,20 @@ class _FormPageState extends State<FormPage> {
         
         body: 
       
+      
         SingleChildScrollView(
+
           child: Padding(
-          padding: const EdgeInsets.all(20.0),
+            
+          padding: const EdgeInsets.all(12.0),
+
+          
+          child: Column(
+          children: <Widget>[
+             _crearImagen(context),
+          Card(
+            child:Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 25 ),
 
           child: new Form(
            
@@ -175,7 +186,7 @@ class _FormPageState extends State<FormPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                _crearImagen(context),
+             
                 new TextFormField(
                   controller: _textFieldController,
                   decoration: new InputDecoration(labelText: "Nombre:", helperText: "Ejemplo: Juan Antonio Ruiz"),
@@ -230,10 +241,6 @@ class _FormPageState extends State<FormPage> {
                ),
              
                
-
-
-       
-
            
                 new Padding(
                 //  padding: const EdgeInsets.only(top: 20.0),
@@ -290,7 +297,7 @@ class _FormPageState extends State<FormPage> {
 
               ],
             ),
-          ),
+          ),),),],),
         )
         )
         
