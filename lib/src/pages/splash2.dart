@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 //import 'package:splashscreen/splashscreen.dart';
-// import 'package:disenos/src/pages/basico_page.dart';
-// import 'package:disenos/src/pages/scroll_page.dart';
+// import 'package:Registralo2/src/pages/basico_page.dart';
+// import 'package:Registralo2/src/pages/scroll_page.dart';
 
-import 'package:disenos/src/pages/utils/flutkart.dart';
+import 'package:Registralo2/src/pages/utils/flutkart.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 
@@ -22,9 +23,18 @@ class  _MyApp1 extends State<MyApp1> {
    @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: AppBar(
+      flexibleSpace: Image(
+          image: AssetImage('assets/appbar2.png'), 
+          fit: BoxFit.cover
+        ),
+        backgroundColor: Color.fromRGBO(33, 150, 243, 1.0),
+       ),
       body: Stack(
+       
         fit: StackFit.expand,
         children: <Widget>[
+          _fondoApp(),
           Container(
             decoration: BoxDecoration(color: Colors.blueAccent),
           ),
@@ -41,7 +51,7 @@ class  _MyApp1 extends State<MyApp1> {
                         backgroundColor: Colors.white,
                         radius: 50.0,
                         child: Icon(
-                          Icons.shopping_cart,
+                          Icons.inbox,
                           color: Colors.greenAccent,
                           size: 50.0,
                         ),
@@ -85,6 +95,35 @@ class  _MyApp1 extends State<MyApp1> {
           )
         ],
       ),
+    );
+  }
+   Widget _fondoApp(){
+    final gradiente = Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: FractionalOffset(0.0, 0.6),
+          end: FractionalOffset(0.0, 1.0),
+          colors: [
+            Color.fromRGBO(120, 200, 240, 1.0),
+            Color.fromRGBO(120, 200, 240, 1.0)
+          ]
+        )
+      ),
+    );
+    final cajaRosa = Transform.rotate(
+      angle: -pi / 5.0,
+    );
+    
+    return Stack(
+      children: <Widget>[
+        gradiente,
+        Positioned(
+          top: -100.0,
+          child: cajaRosa
+        )
+      ],
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:disenos/src/pages/repository.dart';
+import 'package:Registralo2/src/pages/repository.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';

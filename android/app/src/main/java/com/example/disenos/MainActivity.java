@@ -1,4 +1,4 @@
-package com.example.disenos;
+package com.example.Registralo2;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

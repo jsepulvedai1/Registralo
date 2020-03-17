@@ -1,4 +1,4 @@
-import 'package:disenos/src/pages/state_model.dart';
+import 'package:Registralo2/src/pages/state_model.dart';
 
 class Repository {
   // http://locationsng-api.herokuapp.com/api/v1/lgas

@@ -1,11 +1,11 @@
-import 'package:disenos/src/pages/NavBarPostLogin.dart';
+import 'package:Registralo2/src/pages/NavBarPostLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:disenos/src/pages/principal.dart';
-import 'package:disenos/src/pages/Login.dart';
-import 'package:disenos/src/pages/post_login.dart';
-import 'package:disenos/src/pages/splash2.dart';
-import 'package:disenos/src/bloc/provider.dart';
+import 'package:Registralo2/src/pages/principal.dart';
+import 'package:Registralo2/src/pages/Login.dart';
+import 'package:Registralo2/src/pages/post_login.dart';
+import 'package:Registralo2/src/pages/splash2.dart';
+import 'package:Registralo2/src/bloc/provider.dart';
 
 
 
@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
       title: 'Diseños',
       initialRoute: 'inicio',
       routes: {
-        'basico'  : (BuildContext context ) => BottomNavBar(),
+        'basico'  : (BuildContext context ) => TabbedAppBarDemo(),
         // 'scroll'  : (BuildContext context ) => ScrollPage()
         'botones' : (BuildContext context ) => BotonesPage(),
-        'login'  : (BuildContext context) =>   TabbedAppBarDemo(),
-        //'poslogin': (BuildContext context) =>   TabbedAppBarDemo(),
+        'login'  : (BuildContext context) =>   LoginPage(),
+        
         'inicio': (BuildContext context) => MyApp1(),
       },
       ),
@@ -52,13 +52,13 @@ class MyApp extends StatelessWidget {
 //   Widget build(BuildContext context) {
 //     return new SplashScreen(
 //       title: new Text(
-//         'Bienvenido Registralo',
+//         'Bienvenido Registralo2',
 //         style: new TextStyle( fontWeight: FontWeight.bold, fontSize: 20.0,),
 //       ),
 //       seconds: 5,
 //       navigateAfterSeconds: MyApp(),
 //       image: new Image.asset(
-//       'assets/images_registralo.png'),
+//       'assets/images_Registralo2.png'),
 
 //       backgroundColor: Colors.blueAccent,
 //       styleTextUnderTheLoader: new TextStyle(),

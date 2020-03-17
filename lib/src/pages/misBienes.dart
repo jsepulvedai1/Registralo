@@ -31,22 +31,13 @@ void actionTest() {
   }
 
     class DetalleBienView extends StatelessWidget {
-      @override
-      final test = 'Lorem ipsum dolor sit amet consectetur ';
+      
+      final test = 'Teléfonos Celulares / Huawei / ';
       final data;
       DetalleBienView({this.data});
-      
-
       Widget build(BuildContext context) {
           return Scaffold(
               backgroundColor: Color.fromRGBO(140, 208, 242, 1),
-              appBar: AppBar(
-                  title: Text('${data}'),
-                  leading: new IconButton(
-                    icon: new Icon(Icons.arrow_back, color: Colors.white),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ), 
-              ),
               body: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -61,7 +52,7 @@ void actionTest() {
                           children: <Widget>[
                             ListTile(
                               title: Text("Número #"),
-                              subtitle: Text('19232'),
+                              subtitle: Text('864205048035745'),
                             ),
                             ListTile(
                               title: Text("Estado Actual"),
@@ -73,7 +64,7 @@ void actionTest() {
                               height: 120.0,
                               child:   ListTile(
                               title: Text("Descripción del bien"),
-                              subtitle: Text(test+test+test),
+                              subtitle: Text(test),
                             ),
                             ),
                           
@@ -117,8 +108,8 @@ void actionTest() {
     // replace this function with the code in the examples
     Widget _myListView(BuildContext context) {
     
-      final europeanCountries = ['HUAWEI P9',
-              ];
+      final europeanCountries = ['HUAWEI P9','PS3','Camara de video sony','iphone','notebook acer','bicicleta oxford',
+      'camara fotografica','HUAWEI P9','PS3','Camara de video sony','iphone','notebook acer','bicicleta oxford','camara fotografica'];
 
       return ListView.builder(
           itemCount: europeanCountries.length,

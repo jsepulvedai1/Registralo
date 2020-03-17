@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:disenos/src/bloc/login_bloc.dart';
+import 'package:Registralo2/src/bloc/login_bloc.dart';
 
 
 
