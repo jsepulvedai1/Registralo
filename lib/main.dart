@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         'basico'  : (BuildContext context ) => TabbedAppBarDemo(),
         // 'scroll'  : (BuildContext context ) => ScrollPage()
         'botones' : (BuildContext context ) => BotonesPage(),
-        'login'  : (BuildContext context) =>   LoginPage(),
+        'login'  : (BuildContext context) =>   TabbedAppBarDemo(),
         
         'inicio': (BuildContext context) => MyApp1(),
       },
