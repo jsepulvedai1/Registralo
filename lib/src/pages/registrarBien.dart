@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class RegistrarBien extends StatelessWidget {
 
   @override
-<<<<<<< lib/src/pages/registrarBien.dart
       Widget build(BuildContext context) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -47,21 +46,4 @@ class RegistrarBien extends StatelessWidget {
   //         ),
   //       ));
   // }
-=======
-  Widget build(BuildContext context) {
-      return Scaffold(
-      backgroundColor: Color.fromRGBO(140, 208, 242, 1),
-    
-   
-      body: Container(   
-        child: Column(
-          children: <Widget>[
-            _crearImagen(context),
-          ],) ,
-          )
-
-          
-    );
-  }
->>>>>>> lib/src/pages/registrarBien.dart
 

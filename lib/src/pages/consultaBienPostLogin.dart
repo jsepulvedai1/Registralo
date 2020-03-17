@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:disenos/src/pages/repository.dart';
+import 'package:Registralo2/src/pages/repository.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
@@ -20,6 +20,15 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
   List<String> _lgas = ["marca .."];
   String _selectedState = "Selcione un Categoria";
   String _selectedLGA = "marca ..";
+  List<String> _locations = [
+    'Seleccione', 
+    'Compra informal', 
+    'Compra Tienda Retail', 
+    'Regalo'
+    
+    ]; // Option 2
+  String _selectedLocation; // Option 2
+
 
   String _locationMessage = ""; 
   void _getCurrentLocation() async {
@@ -100,6 +109,45 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
                 value: _selectedLGA,
                
               ),
+              TextField(
+                  decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Valor Estimado'
+                ), 
+
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Numero de serie'
+                ), 
+
+              ),
+              TextField(
+                maxLines: 2,
+                  decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Descripción'
+                ), 
+
+              ),
+
+            DropdownButton(
+              isExpanded: true,
+              hint: Text('Pocedencia del bien'), // Not necessary for Option 1
+              value: _selectedLocation,
+              onChanged: (newValue) {
+                setState(() {
+                  _selectedLocation = newValue;
+                });
+              },
+              items: _locations.map((location) {
+                return DropdownMenuItem(
+                  child: new Text(location),
+                  value: location,
+                );
+              }).toList(),
+          ),
               
               Center(
 
@@ -114,10 +162,10 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                     Text(
-                    "Consultar",
+                    "Guardar",
                     style: new TextStyle(color: Colors.black),
                   ),
-                    Icon(Icons.help_outline, color: Colors.grey, ),
+                    Icon(Icons.check, color: Colors.grey, ),
                     ],
                   ),
                       onPressed: (){
@@ -132,6 +180,7 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
                     
                           
                         ),
+                        
                         
 
                         
