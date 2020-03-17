@@ -105,18 +105,15 @@ class ChoicePage extends StatelessWidget {
     
   }
 }
-
 Widget _tabla(){
-    
-        return Scaffold(
-    body: _home,
-    );
-      
-      
-  }
-
-  Widget _tabla2(){
-    
+  return Scaffold(
+  body: _misBienes,
+  );}
+Widget _tabla2(){
+  return Scaffold(
+  body: _registrarBien,
+  );}
+Widget _tabla3(){
     return Scaffold(
     body: _misBienes,
     );
