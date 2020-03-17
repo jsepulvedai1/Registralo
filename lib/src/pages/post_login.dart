@@ -2,7 +2,10 @@ import 'package:Registralo2/src/pages/consultaBien.dart';
 import 'package:Registralo2/src/pages/contacto.dart';
 import 'package:Registralo2/src/pages/misBienes.dart';
 import 'package:Registralo2/src/pages/registrarBien.dart';
+
 import 'package:flutter/material.dart';
+
+import 'consultaBienPostLogin.dart';
  
 class TabbedAppBarDemo extends StatefulWidget {
 
@@ -78,6 +81,7 @@ final MisBienes _misBienes =  MisBienes();
 final Home _home = Home();
 final Contacto contacto = Contacto();
 final RegistrarBien _registrarBien = RegistrarBien();
+final ConsultaBienPostLogin _consultaBienPostLogin = ConsultaBienPostLogin();
 
 final List<Choice> choices = <Choice>[
   Choice(title: 'Mis Bienes', tabla: _tabla2(),icon: Icons.desktop_mac, color: Color.fromRGBO(255, 255, 0, 0)),
@@ -120,19 +124,19 @@ Widget _tabla3(){
      
       
   }
-  Widget _tabla3(){
+  // Widget _tabla3(){
     
-        return Scaffold(
-    body: contacto,
-    );
+  //       return Scaffold(
+  //   body: contacto,
+  //   );
       
       
-  }
+  // }
 
    Widget _tabla4(){
     
         return Scaffold(
-    body: _registrarBien,
+    body: _consultaBienPostLogin,
     );
       
       

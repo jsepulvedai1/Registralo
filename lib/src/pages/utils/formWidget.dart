@@ -27,7 +27,7 @@ class _FormWidgetState extends State<FormWidget> {
   bool showInputs;
   @override
   void initState() {
-    var categories = ['Bicicletas' 'Computadores Portatiles','Camara de video','Camara Fotografica','Telefonos Celulres','Tablets','Televisores'];
+    var categories = ['Bicicletas','Computadores Portatiles','Camara de video','Camara Fotografica','Telefonos Celulres','Tablets','Televisores'];
     checkBoxBrand = false;
     showInputs = false;
     var mapData = new Map<String, dynamic>();
