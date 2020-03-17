@@ -1,9 +1,6 @@
-import 'package:disenos/src/pages/ContactoPostLogin.dart';
-import 'package:disenos/src/pages/consultaBien.dart';
-import 'package:disenos/src/pages/consultaBienPostLogin.dart';
-import 'package:disenos/src/pages/misBienes.dart';
-import 'package:disenos/src/pages/misDatos.dart';
-import 'package:disenos/src/pages/registrarBien.dart';
+import 'package:Registralo2/src/pages/consultaBien.dart';
+import 'package:Registralo2/src/pages/contacto.dart';
+import 'package:Registralo2/src/pages/misBienes.dart';
 import 'package:flutter/material.dart';
  
 class TabbedAppBarDemo extends StatefulWidget {
@@ -27,32 +24,13 @@ class _TabbedAppBarDemo extends State<TabbedAppBarDemo> {
       home: DefaultTabController(
         length: choices.length,
         child: Scaffold(
-          appBar: AppBar(
-
-          //     flexibleSpace: Image(
-          // image: AssetImage('assets/appbar2.png'), 
-          // fit: BoxFit.cover
-    
-
-          // ),
-           title: const Text('Bienvenido (Nombre usuario)' ),
-            bottom: TabBar(
-             // indicatorColor: Color.fromRGBO(41, 51, 125, 1.0),
-              isScrollable: true,
-              tabs: choices.map<Widget>((Choice choice) {
-                return Tab(
-                  text: choice.title,
-                  icon: Icon(
-                    choice.icon
-                  ),
-                  
-                );
-              }).toList(),
-            ),
-          ),
-
-
-          
+        appBar: AppBar(
+      flexibleSpace: Image(
+          image: AssetImage('assets/appbar2.png'), 
+          fit: BoxFit.cover
+        ),
+        backgroundColor: Color.fromRGBO(33, 150, 243, 1.0),
+       ),
           backgroundColor: Color.fromRGBO(120, 200, 240, 1.0),
           body: TabBarView(
       
@@ -65,6 +43,23 @@ class _TabbedAppBarDemo extends State<TabbedAppBarDemo> {
               );
             }).toList(),
           ),
+          extendBody: false,
+          bottomNavigationBar: BottomAppBar(
+            color:Color.fromRGBO(33, 150, 243, 1.0),
+            child:  TabBar(
+              isScrollable: true,
+              tabs: choices.map<Widget>((Choice choice) {
+                return Tab(
+                  text: choice.title,
+                  icon: Icon(
+                    choice.icon,
+                    //color:  Color.fromRGBO(105, 234, 15, 0)),
+                
+                  
+                ));
+              }).toList(),
+            ),
+            ),
         ),
       ),
     );
@@ -75,26 +70,26 @@ class Choice {
   final String title;
   final Widget tabla;
   final IconData  icon;
-  Choice({this.title, this.tabla,this.icon});
+  final Color color;
+  Choice({this.title, this.tabla,this.icon,this.color});
 }
 final MisBienes _misBienes =  MisBienes();
-final RegistrarBien _registrarBien = RegistrarBien();
-final ConsultaBienPostLogin _consultaBienPostLogin = ConsultaBienPostLogin();
-final MisDatos _misDatos = MisDatos();
-final ContactoPostLogin _contactoPostLogin = ContactoPostLogin();
+final Home _home = Home();
+final Contacto contacto = Contacto();
 
 final List<Choice> choices = <Choice>[
-  Choice(title: 'Mis Bienes', tabla: _tabla(),icon: Icons.laptop),
-  Choice(title: 'Registrar Bien', tabla: _tabla2(),icon: Icons.control_point,),
-  Choice(title: 'consulta Bien', tabla: _tabla3(),icon: Icons.search),
-  Choice(title: 'Mis Datos', tabla: _tabla4(),icon: Icons.account_box,),
-  Choice(title: 'Contacto', tabla: _tabla5(),icon: Icons.email),
+  Choice(title: 'Mis Bienes', tabla: _tabla2(),icon: Icons.desktop_mac, color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'Registrar Bien', tabla: _tabla(),icon: Icons.save,color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'consulta Bien', tabla: _tabla2(),icon: Icons.search,color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'Mis Datos', tabla: _tabla(),icon: Icons.person,color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'Contacto', tabla: _tabla3(),icon: Icons.phone_iphone,color: Color.fromRGBO(255, 255, 0, 0)),
   
 ];
  
 class ChoicePage extends StatelessWidget {
   const ChoicePage({Key key, this.choice}) : super(key: key);
   final Choice choice;
+    
  
   @override
   Widget build(BuildContext context) {
@@ -118,13 +113,16 @@ Widget _tabla2(){
   );}
 Widget _tabla3(){
     return Scaffold(
-    body: _consultaBienPostLogin,
-  );}
-Widget _tabla4(){
-  return Scaffold(
-  body: _misDatos,
-  );}
-Widget _tabla5(){
-  return Scaffold(
-  body: _contactoPostLogin,
-);}
+    body: _misBienes,
+    );
+     
+      
+  }
+  Widget _tabla3(){
+    
+        return Scaffold(
+    body: contacto,
+    );
+      
+      
+  }

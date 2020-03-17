@@ -20,13 +20,13 @@ class Issue {
   static List<Issue> getIssues() {
     return <Issue>[
       Issue(0, 'Seleccione asunto...'),
-      Issue(1, 'Activación de cuenta REGISTRALO.CL'),
+      Issue(1, 'Activación de cuenta Registralo2.CL'),
       Issue(2, 'Cambio de Estado de Bien'),
       Issue(3, 'Consulta por un bien que deseo adquirir'),
-      Issue(4, 'Funcionamiento del sistema REGISTRALO.CL'),
+      Issue(4, 'Funcionamiento del sistema Registralo2.CL'),
       Issue(5, 'Ingreso a cuenta de sistema'),
       Issue(6, 'Inscripción de un bien con marca de no registrada de una categoría de la lista'),
-      Issue(7, 'Inscripción en el sistema REGISTRALO.CL'),
+      Issue(7, 'Inscripción en el sistema Registralo2.CL'),
       Issue(8, 'Recuperación clave'),
       Issue(9, 'Registro de un bien'),
       Issue(10, 'Otro asunto'),
@@ -203,14 +203,14 @@ class _FormPageState extends State<FormPage> {
                 ),
                 new TextFormField(
                   controller: _textFieldController3,
-                  decoration: new InputDecoration(labelText: "Email:", helperText: "Ej. usuario@registralo.cl\n"),
+                  decoration: new InputDecoration(labelText: "Email:", helperText: "Ej. usuario@Registralo2.cl\n"),
                   validator: (val) =>
                       !val.contains('@') ? 'Invalid Email' : null,
                   onSaved: (val) => _email = val,
                 ),
                 //validar reingreso de email sea el mismo que el ingresado previamente
                 // new TextFormField(
-                //   decoration: new InputDecoration(labelText: "Email", helperText: "Ej. usuario@registralo.cl"),
+                //   decoration: new InputDecoration(labelText: "Email", helperText: "Ej. usuario@Registralo2.cl"),
                 //   validator: (val) 
                 //   if (!val.compareTo('_email')) {
                 //     return 'Please enter some text';

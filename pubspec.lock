@@ -99,20 +99,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.2"
-  device_id:
-    dependency: "direct main"
-    description:
-      name: device_id
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0"
-  device_info:
-    dependency: "direct main"
-    description:
-      name: device_info
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.1"
   direct_select:
     dependency: "direct main"
     description:
@@ -228,13 +214,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
-  imei_plugin:
-    dependency: "direct main"
-    description:
-      name: imei_plugin
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.6"
   intl:
     dependency: transitive
     description:

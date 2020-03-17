@@ -1,10 +1,10 @@
-import 'package:disenos/src/pages/ContactoPostLogin.dart';
-import 'package:disenos/src/pages/misDatos.dart';
+import 'package:Registralo2/src/pages/ContactoPostLogin.dart';
+import 'package:Registralo2/src/pages/misDatos.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:disenos/src/pages/consultaBienPostLogin.dart';
-import 'package:disenos/src/pages/misBienes.dart';
-import 'package:disenos/src/pages/registrarBien.dart';
+import 'package:Registralo2/src/pages/consultaBienPostLogin.dart';
+import 'package:Registralo2/src/pages/misBienes.dart';
+import 'package:Registralo2/src/pages/registrarBien.dart';
 
 void main() => runApp(MaterialApp(home: BottomNavBar()));
 
