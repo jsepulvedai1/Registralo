@@ -38,6 +38,16 @@ void actionTest() {
       Widget build(BuildContext context) {
           return Scaffold(
               backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+<<<<<<< lib/src/pages/misBienes.dart
+=======
+              // appBar: AppBar(
+              //     title: Text('${data}'),
+              //     leading: new IconButton(
+              //       icon: new Icon(Icons.arrow_back, color: Colors.white),
+              //       onPressed: () => Navigator.of(context).pop(),
+              //     ), 
+              // ),
+>>>>>>> lib/src/pages/misBienes.dart
               body: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -51,12 +61,22 @@ void actionTest() {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             ListTile(
+<<<<<<< lib/src/pages/misBienes.dart
                               title: Text("Número #"),
                               subtitle: Text('864205048035745'),
+=======
+                              title: Text("Bien"),
+                              subtitle: Text('${data}'),
+                            ),
+
+                            ListTile(
+                              title: Text("Número"),
+                              subtitle: Text('19232'),
+>>>>>>> lib/src/pages/misBienes.dart
                             ),
                             ListTile(
                               title: Text("Estado Actual"),
-                              subtitle: Text("Robado"),
+                              subtitle: Text("Registrado"),
                             ),
                              new SizedBox(
                               
@@ -64,7 +84,11 @@ void actionTest() {
                               height: 120.0,
                               child:   ListTile(
                               title: Text("Descripción del bien"),
+<<<<<<< lib/src/pages/misBienes.dart
                               subtitle: Text(test),
+=======
+                              subtitle: Text("Teléfonos Celulares \nHUAWEI \n23848329434"),
+>>>>>>> lib/src/pages/misBienes.dart
                             ),
                             ),
                           
