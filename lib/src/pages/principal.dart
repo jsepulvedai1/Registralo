@@ -19,10 +19,10 @@ class _BotonesPage extends State<BotonesPage> {
     return Scaffold(
        appBar: AppBar(
         
-        flexibleSpace: Image(
-          image: AssetImage('assets/appbar2.png'), 
-          fit: BoxFit.cover
-    
+          flexibleSpace:
+          Image(
+            image: AssetImage('assets/appbar2.png'), 
+            fit: BoxFit.cover,
 
           ),
 

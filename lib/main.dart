@@ -7,10 +7,7 @@ import 'package:Registralo2/src/pages/post_login.dart';
 import 'package:Registralo2/src/pages/splash2.dart';
 import 'package:Registralo2/src/bloc/provider.dart';
 
-
-
-
- void main() {
+void main() {
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,
     home: new MyApp(),
