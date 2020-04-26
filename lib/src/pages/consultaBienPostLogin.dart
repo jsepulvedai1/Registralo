@@ -31,10 +31,8 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
 
 
   String _locationMessage = ""; 
-  void _getCurrentLocation() async {
-    print('saa');
+  void _getCurrentLocation() async { 
    final position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print('3333');  
     print(position);
     setState(() {
       _locationMessage = "${position.latitude}, ${position.longitude}";
@@ -150,7 +148,7 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
           ),
               
               Center(
-
+                
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18),
@@ -165,6 +163,7 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
                     "Guardar",
                     style: new TextStyle(color: Colors.black),
                   ),
+                
                     Icon(Icons.check, color: Colors.grey, ),
                     ],
                   ),
@@ -172,6 +171,7 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
                           //var rr =_login('javier','123');
                         
                           _getCurrentLocation();
+                          _showDialog();
                           
                           
                       //Navigator.pop(context); 
@@ -180,13 +180,55 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
                     
                           
                         ),
+                      
                         
                         
 
                         
                         
             
-              ),],),),)
+              ),
+               Center(
+                  
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    //side: BorderSide(color: Color.fromRGBO(41, 51, 125, 1))
+                    ),
+                    
+                   child: Row(
+                     
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                    Text(
+                    "Registrar datos del Telefono Celular",
+                    style: new TextStyle(color: Colors.black),
+                  ),
+                
+                    Icon(Icons.check, color: Colors.grey, ),
+                    ],
+                  ),
+                      onPressed: (){
+                          //var rr =_login('javier','123');
+                        
+                          _getCurrentLocation();
+                          _showDialog();
+                          
+                          
+                      //Navigator.pop(context); 
+                    },
+                    
+                    
+                          
+                        ),
+                      
+                        
+                        
+
+                        
+                        
+            
+              )],),),)
               
             ],
             
@@ -196,6 +238,38 @@ class _ConsultaBienPostLoginState extends State<ConsultaBienPostLogin> {
       ),
     );
   }
+
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog 
+        return AlertDialog(
+          actions: <Widget>[
+            Container(
+              height: 400,
+              width: 600,
+              child: Image.asset(
+                'assets/findID.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Cerrar"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
 
   void _onSelectedState(String value) {
     setState(() {

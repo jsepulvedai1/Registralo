@@ -32,7 +32,7 @@ void actionTest() {
 
     class DetalleBienView extends StatelessWidget {
       
-      final test = 'Teléfonos Celulares / Huawei / ';
+      final test = 'IPhone se, de color rosa con rayadura en la pantalla';
       final data;
       DetalleBienView({this.data});
       Widget build(BuildContext context) {
@@ -51,22 +51,22 @@ void actionTest() {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             ListTile(
-                              title: Text("Número #"),
-                              subtitle: Text('864205048035745'),
+                              title: Text("ID"),
+                              subtitle: Text('20304050'),
                             ),
                             ListTile(
                               title: Text("Estado Actual"),
                               subtitle: Text("Registrado"),
                             ),
-                             new SizedBox(
+                             
                               
-                              width: 300.0,
-                              height: 120.0,
-                              child:   ListTile(
+                             
+                            
+                            ListTile(
                               title: Text("Descripción del bien"),
                               subtitle: Text(test),
                             ),
-                            ),
+                            
                           
                             new SizedBox(
                               

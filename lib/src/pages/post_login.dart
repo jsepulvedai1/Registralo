@@ -84,7 +84,7 @@ final RegistrarBien _registrarBien = RegistrarBien();
 final ConsultaBienPostLogin _consultaBienPostLogin = ConsultaBienPostLogin();
 
 final List<Choice> choices = <Choice>[
-  Choice(title: 'Mis Bienes', tabla: _tabla2(),icon: Icons.desktop_mac, color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'Mis Bienes', tabla: _tabla(),icon: Icons.desktop_mac, color: Color.fromRGBO(255, 255, 0, 0)),
   Choice(title: 'Registrar Bien', tabla: _tabla4(),icon: Icons.save,color: Color.fromRGBO(255, 255, 0, 0)),
   Choice(title: 'consulta Bien', tabla: _tabla2(),icon: Icons.search,color: Color.fromRGBO(255, 255, 0, 0)),
   Choice(title: 'Mis Datos', tabla: _tabla(),icon: Icons.person,color: Color.fromRGBO(255, 255, 0, 0)),
