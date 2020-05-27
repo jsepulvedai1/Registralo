@@ -3,10 +3,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 //import 'package:splashscreen/splashscreen.dart';
-// import 'package:Registralo2/src/pages/basico_page.dart';
-// import 'package:Registralo2/src/pages/scroll_page.dart';
+// import 'package:Registralo/src/pages/basico_page.dart';
+// import 'package:Registralo/src/pages/scroll_page.dart';
 
-import 'package:Registralo2/src/pages/utils/flutkart.dart';
+import 'package:Registralo/src/pages/utils/flutkart.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 

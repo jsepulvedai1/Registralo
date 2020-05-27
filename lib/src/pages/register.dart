@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:direct_select/direct_select.dart';
 
 
-class FormPage extends StatefulWidget {
-  FormPage(): super();
+class Register extends StatefulWidget {
+  Register(): super();
   
   
   @override
-  _FormPageState createState() => new _FormPageState();
+  _Register createState() => new _Register();
  
 }
 class Issue {
@@ -20,13 +20,13 @@ class Issue {
   static List<Issue> getIssues() {
     return <Issue>[
       Issue(0, 'Seleccione asunto...'),
-      Issue(1, 'Activación de cuenta Registralo.CL'),
+      Issue(1, 'Activación de cuenta REGISTRALO.CL'),
       Issue(2, 'Cambio de Estado de Bien'),
       Issue(3, 'Consulta por un bien que deseo adquirir'),
-      Issue(4, 'Funcionamiento del sistema Registralo.CL'),
+      Issue(4, 'Funcionamiento del sistema REGISTRALO.CL'),
       Issue(5, 'Ingreso a cuenta de sistema'),
       Issue(6, 'Inscripción de un bien con marca de no registrada de una categoría de la lista'),
-      Issue(7, 'Inscripción en el sistema Registralo.CL'),
+      Issue(7, 'Inscripción en el sistema REGISTRALO.CL'),
       Issue(8, 'Recuperación clave'),
       Issue(9, 'Registro de un bien'),
       Issue(10, 'Otro asunto'),
@@ -45,7 +45,7 @@ class LoginForm extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(),
-      home: new FormPage(),
+      home: new  Register(),
     );
   }
 }
@@ -54,7 +54,7 @@ class LoginForm extends StatelessWidget {
 
 
 
-class _FormPageState extends State<FormPage> {
+class _Register extends State<Register> {
   List<Issue> _issues = Issue.getIssues();
   List<DropdownMenuItem<Issue>> _dropdownMenuItems;
   Issue _selectedIssue;
@@ -156,28 +156,35 @@ class _FormPageState extends State<FormPage> {
       
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
-
+         appBar: AppBar(
+      flexibleSpace: Image(
+          image: AssetImage('assets/appbar2.png'), 
+          fit: BoxFit.cover
+        ),
+        backgroundColor: Color.fromRGBO(33, 150, 243, 1.0),
+       ),
         backgroundColor: Color.fromRGBO(140, 208, 242, 1),
      
         key: scaffoldKey,
         
         body: 
       
-      
         SingleChildScrollView(
-
           child: Padding(
-            
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(20.0),
+
 
           
           child: Column(
-          children: <Widget>[
-             _crearImagen(context),
+          children: 
+          
+          <Widget>[
+     
+        
           Card(
             child:Padding(
               padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 25 ),
-
+                     
           child: new Form(
            
             key: formKey,
@@ -186,10 +193,16 @@ class _FormPageState extends State<FormPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-             
+      
                 new TextFormField(
                   controller: _textFieldController,
-                  decoration: new InputDecoration(labelText: "Nombre:", helperText: "Ejemplo: Juan Antonio Ruiz"),
+                  decoration: new InputDecoration(labelText: "Nombres:", helperText: "Ejemplo: Juan Antonio"),
+            
+                  onSaved: (val) => _name = val,
+                ),
+                new TextFormField(
+                  controller: _textFieldController,
+                  decoration: new InputDecoration(labelText: "Apellidos:", helperText: "Ejemplo: Ruiz Pardo"),
             
                   onSaved: (val) => _name = val,
                 ),
@@ -197,20 +210,26 @@ class _FormPageState extends State<FormPage> {
                   controller: _textFieldController2,
                   decoration: new InputDecoration(labelText: "Rut:", helperText: "Ejemplo: 11.236.254-K"),
                   validator: (val) =>
-                      val.length < 12 ? 'Rut too short' : null,
+                      val.length < 12 ? 'Rut invalido' : null,
                   onSaved: (val) => _rut = val,
                  
                 ),
                 new TextFormField(
                   controller: _textFieldController3,
-                  decoration: new InputDecoration(labelText: "Email:", helperText: "Ej. usuario@Registralo.cl\n"),
+                  decoration: new InputDecoration(labelText: "Email:", helperText: "Ej. usuario@registralo.cl\n"),
                   validator: (val) =>
-                      !val.contains('@') ? 'Invalid Email' : null,
+                      !val.contains('@') ? 'Email invalido' : null,
                   onSaved: (val) => _email = val,
+                ),
+                 new TextFormField(
+                  controller: _textFieldController,
+                  decoration: new InputDecoration(labelText: "Dirrección:", helperText: "Ejemplo: pasaje rapel 5634"),
+            
+                  onSaved: (val) => _name = val,
                 ),
                 //validar reingreso de email sea el mismo que el ingresado previamente
                 // new TextFormField(
-                //   decoration: new InputDecoration(labelText: "Email", helperText: "Ej. usuario@Registralo.cl"),
+                //   decoration: new InputDecoration(labelText: "Email", helperText: "Ej. usuario@registralo.cl"),
                 //   validator: (val) 
                 //   if (!val.compareTo('_email')) {
                 //     return 'Please enter some text';
@@ -218,29 +237,13 @@ class _FormPageState extends State<FormPage> {
                 //   return null;
                 // ),
       
-                new  DropdownButton( 
-                    //controller: _textFieldController4,
-                    value: _selectedIssue,
-                    items: _dropdownMenuItems,
-                    onChanged: onChangeDropdownItem,
-                    isExpanded: true,
-
-                  ),
-           
-                new  TextFormField(
-                  controller: _textFieldController4,
-                  decoration: new InputDecoration(labelText: "Mensaje:", helperText: '500 caracteres máximo',),
-                  validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-                maxLength: 500,
-                   maxLines: 2,
-               ),
+                
              
                
+
+
+       
+
            
                 new Padding(
                 //  padding: const EdgeInsets.only(top: 20.0),
@@ -261,7 +264,7 @@ class _FormPageState extends State<FormPage> {
                   child: Row(
                       children: <Widget>[
                         Text(
-                          "Enviar",
+                          "Registrarse",
                     style: new TextStyle(color: Colors.black),
                   ),
                         Icon(Icons.mail_outline, color: Colors.grey,),
@@ -297,7 +300,8 @@ class _FormPageState extends State<FormPage> {
 
               ],
             ),
-          ),),),],),
+          ),),
+                  ),]),
         )
         )
         
@@ -307,22 +311,6 @@ class _FormPageState extends State<FormPage> {
     
   }
 }
-  Widget _crearImagen(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: GestureDetector(
-        onTap: ()=> Navigator.pushNamed(context, 'scroll'),
-        child: 
-        Image.asset('assets/contacto.png',height: 100.0, 
-          fit: BoxFit.contain,),
-
-
-     
-         
-        ),
-      );
-    
-  }
 
   class MySelectionItem extends StatelessWidget {
   final String title;
@@ -362,4 +350,20 @@ class _FormPageState extends State<FormPage> {
       child: Text(title),
     );
   }
+  }
+  Widget _crearImagen(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: GestureDetector(
+        onTap: ()=> Navigator.pushNamed(context, 'scroll'),
+        child: 
+        Image.asset('assets/contacto.png',height: 100.0, 
+          fit: BoxFit.contain,),
+
+
+     
+         
+        ),
+      );
+    
   }

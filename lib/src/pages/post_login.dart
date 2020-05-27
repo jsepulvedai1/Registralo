@@ -1,11 +1,12 @@
-import 'package:Registralo2/src/pages/consultaBien.dart';
-import 'package:Registralo2/src/pages/contacto.dart';
-import 'package:Registralo2/src/pages/misBienes.dart';
-import 'package:Registralo2/src/pages/registrarBien.dart';
-
+import 'package:Registralo/src/pages/consultaBien.dart';
+import 'package:Registralo/src/pages/contacto.dart';
+import 'package:Registralo/src/pages/misBienes.dart';
+import 'package:Registralo/src/pages/registrarBien.dart';
+import 'package:Registralo/src/pages/misDatos.dart';
+import 'package:Registralo/src/pages/ContactoPostLogin.dart';
 import 'package:flutter/material.dart';
 
-import 'consultaBienPostLogin.dart';
+import 'registrar_bien.dart';
  
 class TabbedAppBarDemo extends StatefulWidget {
 
@@ -78,17 +79,20 @@ class Choice {
   Choice({this.title, this.tabla,this.icon,this.color});
 }
 final MisBienes _misBienes =  MisBienes();
-final Home _home = Home();
+//final Home _home = Home();
 final Contacto contacto = Contacto();
 final RegistrarBien _registrarBien = RegistrarBien();
 final ConsultaBienPostLogin _consultaBienPostLogin = ConsultaBienPostLogin();
+final MisDatos _misDatos = MisDatos();
+final ContactoPostLogin _contactoPostLogin = ContactoPostLogin();
+final Home _consultarBien = Home();
 
 final List<Choice> choices = <Choice>[
   Choice(title: 'Mis Bienes', tabla: _tabla(),icon: Icons.desktop_mac, color: Color.fromRGBO(255, 255, 0, 0)),
-  Choice(title: 'Registrar Bien', tabla: _tabla4(),icon: Icons.save,color: Color.fromRGBO(255, 255, 0, 0)),
-  Choice(title: 'consulta Bien', tabla: _tabla2(),icon: Icons.search,color: Color.fromRGBO(255, 255, 0, 0)),
-  Choice(title: 'Mis Datos', tabla: _tabla(),icon: Icons.person,color: Color.fromRGBO(255, 255, 0, 0)),
-  Choice(title: 'Contacto', tabla: _tabla3(),icon: Icons.phone_iphone,color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'Registrar Bien', tabla: _tabla2(),icon: Icons.save,color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'consulta Bien', tabla: _tabla3(),icon: Icons.search,color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'Mis Datos', tabla: _tabla4(),icon: Icons.person,color: Color.fromRGBO(255, 255, 0, 0)),
+  Choice(title: 'Contactos', tabla: _tabla5(),icon: Icons.phone_iphone,color: Color.fromRGBO(255, 255, 0, 0)),
   
 ];
  
@@ -109,35 +113,31 @@ class ChoicePage extends StatelessWidget {
     
   }
 }
-Widget _tabla(){
-  return Scaffold(
-  body: _misBienes,
-  );}
-Widget _tabla2(){
-  return Scaffold(
-  body: _registrarBien,
-  );}
-Widget _tabla3(){
+  Widget _tabla(){
     return Scaffold(
-    body: _misBienes,
+      body: _misBienes,
     );
-     
-      
   }
-  // Widget _tabla3(){
-    
-  //       return Scaffold(
-  //   body: contacto,
-  //   );
-      
-      
-  // }
 
-   Widget _tabla4(){
-    
-        return Scaffold(
-    body: _consultaBienPostLogin,
+  Widget _tabla2(){
+    return Scaffold(
+      body: _consultaBienPostLogin,
     );
-      
-      
+  }
+  
+   Widget _tabla3(){
+  return Scaffold(
+  body: _consultarBien,
+  );}
+  
+  Widget _tabla4(){
+    return Scaffold(
+    body: _misDatos,
+    );
+  }
+  
+  Widget _tabla5(){
+    return Scaffold(
+      body: _contactoPostLogin,
+    );
   }
