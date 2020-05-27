@@ -1,3 +1,4 @@
 # Diseños
 
-Este es el repositorio oficial del proyecto de Diseños de mi curso de Flutter
+Este es el repositorio de registralo app
+
