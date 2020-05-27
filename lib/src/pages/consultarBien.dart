@@ -8,7 +8,6 @@ import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 
 
-
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -80,6 +79,7 @@ class _HomeState extends State<Home> {
               DropdownButton<String>(
                 isExpanded: true,
                 items: _states.map((String dropDownStringItem) {
+
                   return DropdownMenuItem<String>(
                     value: dropDownStringItem,
                     child: Text(dropDownStringItem),
@@ -101,13 +101,6 @@ class _HomeState extends State<Home> {
                 onChanged: (value) => _onSelectedLGA(value),
                 value: _selectedLGA,
                
-              ),
-              TextField(
-                  decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Numero de serie'
-                ), 
-
               ),
                          ], ))),
               
@@ -134,7 +127,7 @@ class _HomeState extends State<Home> {
                           //var rr =_login('javier','123');
                         
                           _getCurrentLocation();
-                          _showDialog();
+                          
                           
                       //Navigator.pop(context); 
                     },
@@ -169,29 +162,6 @@ class _HomeState extends State<Home> {
 
   void _onSelectedLGA(String value) {
     setState(() => _selectedLGA = value);
-  }
-
-  void _showDialog() {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Registralo.cl"),
-          content: new Text("El bien consultado no se encuentra en los registros"),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Cerrar"),
-              onPressed: () {
-                 Navigator.pop(context, _HomeState);
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 }
 

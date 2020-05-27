@@ -1,4 +1,4 @@
-name: Registralo2
+name: Registralo
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -31,6 +31,7 @@ dependencies:
   flutter_form_bloc: ^0.4.2
   flutter_bloc: ^0.21.0
   curved_navigation_bar: ^0.3.2
+  rflutter_alert: ^1.0.3
 
 
 

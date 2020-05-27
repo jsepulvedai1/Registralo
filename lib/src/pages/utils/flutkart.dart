@@ -1,5 +1,5 @@
 class Flutkart {
-  static const String name = "Registralo2";
+  static const String name = "Registralo";
   static const String store = "DE LA SUBSECRETARIA DE PREVENCION DEL DELITO";
   static const String wt1 = "Bienvenido";
   static const String wc1 =

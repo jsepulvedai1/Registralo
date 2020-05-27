@@ -1,70 +1,79 @@
 import 'package:flutter/material.dart';
 
-class MisDatos  extends StatelessWidget {
+class MisDatos extends StatelessWidget {
   @override
-      Widget build(BuildContext context) {
-        return MaterialApp(
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'ListViews',
+      theme: ThemeData(
+        backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+        body: MisBienesView(),
+      ),
+    );
+  }
+}
 
-          debugShowCheckedModeBanner: false,
-          title: 'ListViews',
-          theme: ThemeData(
-            backgroundColor: Color.fromRGBO(140, 208, 242, 1),
-            primarySwatch: Colors.blue,
-          ),
-          home: Scaffold(
-            backgroundColor: Color.fromRGBO(140, 208, 242, 1),
-            body: MisBienesView(),
-          ),
-        );
-      }
-}
 void actionTest() {
-    print('asdsad');
+  print('asdsad');
 }
+
 class MisBienesView extends StatelessWidget {
-@override
-final test = 'Lorem ipsum dolor sit amet consectetur ';
-final data = 'Lorem ipsum dolor sit amet consectetur ';
 
   Widget build(BuildContext context) {
-      return Scaffold(
-          backgroundColor: Color.fromRGBO(140, 208, 242, 1),
-          body: SingleChildScrollView(
-            
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: <Widget>[
-                  Card(
-                    child:Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 25 ),
-                    child: 
-                      Column(
+    return Scaffold(
+        backgroundColor: Color.fromRGBO(140, 208, 242, 1),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              children: <Widget>[
+                Card(
+                  child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 10, right: 10, top: 10, bottom: 25),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           ListTile(
-                            title: Text("Nombre"),
-                            subtitle: Text('Juan Antonio Ruiz'),
+                            title: Text("Rut"),
+                            subtitle: Text('20304050'),
+                            
                           ),
-                            new SizedBox(
+                          ListTile(
+                            title: Text("Nombres"),
+                            subtitle: Text("Javier Isaac"),
+                          ),
+                          ListTile(
+                            title: Text("Apellidos"),
+                            subtitle: Text("Sepulveda Ibañez"),
+                          ),
+                          ListTile(
+                            title: Text("Telefono"),
+                            subtitle: Text("Sepulveda Ibañez"),
+                          ),
+                          ListTile(
+                            title: Text("Dirrección"),
+                            subtitle: Text("Rapel 1234 Conchali"),
+                          ),
+                          new SizedBox(
                             width: 300.0,
-                            height: 120.0,
-                            child:   ListTile(
-                            title: Text("Email"),
-                            subtitle: Text('jruiz@gmail.com'),
+                            height: 60.0,
+                            child: new RaisedButton(
+                              child: new Text('Editar datos'),
+                              onPressed: actionTest,
                             ),
                           ),
                         ],
-                      )
-                    ),
-                  ),
-                ],
-              ),
+                      )),
+                ),
+              ],
             ),
-          )
-      );
-    }
+          ),
+        ));
+  }
 }
-
-
-   

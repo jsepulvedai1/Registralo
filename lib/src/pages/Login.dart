@@ -1,10 +1,12 @@
 import 'dart:async';
+//import 'dart:js';
+
 import 'dart:math';
-import 'package:Registralo2/src/bloc/login_bloc.dart';
+import 'package:Registralo/src/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:Registralo2/src/pages/Animation/FadeAnimation.dart';
-import 'package:Registralo2/src/bloc/provider.dart';
+import 'package:Registralo/src/pages/Animation/FadeAnimation.dart';
+import 'package:Registralo/src/bloc/provider.dart';
 import 'package:xml/xml.dart' as xml;
 
 
@@ -19,19 +21,19 @@ class _LoginPage extends State<LoginPage> {
 Future<String> _loginPost(String username, String password) async {
   
 
-  final response = await http.post("https://soaex.spd.gov.cl/Registralo2//Service_Auth.php?wsdl",
+  final response = await http.post("https://soaex.spd.gov.cl/Registralo//Service_Auth.php?wsdl",
   
     headers: {
           "Content-Type": "text/xml; charset=utf-8",
           "User-Agent": "Apache-HttpClient/4.1.1 (java 1.5)",
           "Host": "soaex.spd.gov.cl",
-          "SOAPAction": "web:WSRegistralo2#usuario_validar", 
+          "SOAPAction": "web:WSRegistralo#usuario_validar", 
           "Connection": "Keep-Alive",
           "Accept-Encoding": "gzip,deflate",
 
           //"Accept": "text/xml"
     },
-    body: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"web:WSRegistralo2\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><soapenv:Header><wsse:Security mustUnderstand=\"1\" xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\"><wsse:UsernameToken xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\"><wsse:Username>Registralo2</wsse:Username><wsse:Password>9rx2HLXJiTrouc7EyMeLHiTl%2FefY1OU2S8sA8SuqggG%2FHtVQU24Or%2BnifJdUI0WsjZE1YSkxrwZHY8zc249SpXG7T5zSmJcMF9034v%2FpWSk%3D</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><web:usuario_validar soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"><usuario xsi:type=\"xsd:string\">"+username+"</usuario><clave xsi:type=\"xsd:string\">"+password+"</clave></web:usuario_validar></soapenv:Body></soapenv:Envelope>",
+    body: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"web:WSRegistralo\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><soapenv:Header><wsse:Security mustUnderstand=\"1\" xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\"><wsse:UsernameToken xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\"><wsse:Username>Registralo</wsse:Username><wsse:Password>9rx2HLXJiTrouc7EyMeLHiTl%2FefY1OU2S8sA8SuqggG%2FHtVQU24Or%2BnifJdUI0WsjZE1YSkxrwZHY8zc249SpXG7T5zSmJcMF9034v%2FpWSk%3D</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><web:usuario_validar soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"><usuario xsi:type=\"xsd:string\">"+username+"</usuario><clave xsi:type=\"xsd:string\">"+password+"</clave></web:usuario_validar></soapenv:Body></soapenv:Envelope>",
 
   );
   var storeDocument = xml.parse(response.body);
@@ -44,7 +46,7 @@ Future<String> _loginPost(String username, String password) async {
     
     return  null;
   }else{
-     _showDialog();
+    Navigator.of(context).pushNamedAndRemoveUntil('basico', (Route<dynamic> route) => false);
     return null;
   }
 }
@@ -119,7 +121,9 @@ Future<String> _loginPost(String username, String password) async {
                 SizedBox( height: 30.0 ),
                 _crearPassword( bloc ),
                 SizedBox( height: 30.0 ),
-                _crearBoton( bloc )
+                _crearBoton( bloc ),
+                 SizedBox( height: 30.0 ),
+                _crearBoton2( bloc )
               ],
             ),
           ),
@@ -252,6 +256,35 @@ Future<String> _loginPost(String username, String password) async {
           color: Colors.black26,
           textColor: Colors.white,
           onPressed: snapshot.hasData ? ()=> _login(bloc, context) : null
+        );
+      },
+    );
+  }
+
+  Widget _crearBoton2( LoginBloc bloc) {
+
+    // formValidStream
+    // snapshot.hasData
+    //  true ? algo si true : algo si false
+
+    return StreamBuilder(
+      stream: bloc.formValidStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        
+        return RaisedButton(
+          child: Container(
+            padding: EdgeInsets.symmetric( horizontal: 80.0, vertical: 15.0),
+            child: Text('Registrate'),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0)
+          ),
+          elevation: 0.0,
+          color: Colors.black26,
+          textColor: Colors.white,
+          onPressed: () {
+                 Navigator.pushNamed(context,'register');
+                 }
         );
       },
     );

@@ -1,4 +1,4 @@
-import 'package:Registralo2/src/pages/utils/formWidget.dart';
+import 'package:Registralo/src/pages/utils/formWidget.dart';
 import 'package:flutter/material.dart';
 
 class RegistrarBien extends StatelessWidget {

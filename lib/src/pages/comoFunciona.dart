@@ -21,7 +21,7 @@ class ComoFunciona extends StatelessWidget{
           // FadeInImage.assetNetwork(
           //   fadeOutDuration: const Duration(seconds: 1),
           //   placeholder:  'assets/comofuncionaimagen.png',
-          //   image: 'https://Registralo2.spd.gov.cl/images/banner1.png',
+          //   image: 'https://Registralo.spd.gov.cl/images/banner1.png',
         
           //   ),
            
@@ -73,7 +73,7 @@ class ComoFunciona extends StatelessWidget{
       child: Container(
         padding: EdgeInsets.symmetric( horizontal: 40.0 ),
         child: Text(
-          'Registralo2 es una iniciativa de la Subsecretaría de Prevención del Delito, supervisada por el Centro de Estudios y Análisis del Delito (CEAD), enmarcada dentro de las iniciativas relacionadas con la prevención de los mercados de bienes robados en Chile.\n\nRegistralo2.cl puede utilizarse como usuario sólo de consulta, para lo cual, en la barra de herramientas se debe escoger Consulta Bien, seleccionando una Categoría y Marca y completando los datos de identificación del bien que deseas consultar. \n\nPara registrar bienes y consultar mayor detalle de bienes registrados en el sistema, debes inscribirte, completando en el icono REGISTRATE, los datos que te identifiquen como usuario de Registralo2.cl Al acceder a tu cuenta de usuario, se despliega una barra de herramientas donde podrás Registrar y Consultar Bienes, además de un inventario de tus bienes registrados y un módulo que contiene los Datos de tu información personal y de contacto.\n\nAl registrar tus bienes, y en el caso de su robo o extravío, Registralo2.cl facilitará la identificación y el contacto a los legítimos dueños de los bienes hallados en procedimiento de la Policía de Investigaciones o Carabineros de Chile y favorecerá su devolución.\n\n\n',
+          'Registralo es una iniciativa de la Subsecretaría de Prevención del Delito, supervisada por el Centro de Estudios y Análisis del Delito (CEAD), enmarcada dentro de las iniciativas relacionadas con la prevención de los mercados de bienes robados en Chile.\n\nRegistralo.cl puede utilizarse como usuario sólo de consulta, para lo cual, en la barra de herramientas se debe escoger Consulta Bien, seleccionando una Categoría y Marca y completando los datos de identificación del bien que deseas consultar. \n\nPara registrar bienes y consultar mayor detalle de bienes registrados en el sistema, debes inscribirte, completando en el icono REGISTRATE, los datos que te identifiquen como usuario de Registralo.cl Al acceder a tu cuenta de usuario, se despliega una barra de herramientas donde podrás Registrar y Consultar Bienes, además de un inventario de tus bienes registrados y un módulo que contiene los Datos de tu información personal y de contacto.\n\nAl registrar tus bienes, y en el caso de su robo o extravío, Registralo.cl facilitará la identificación y el contacto a los legítimos dueños de los bienes hallados en procedimiento de la Policía de Investigaciones o Carabineros de Chile y favorecerá su devolución.\n\n\n',
           textAlign: TextAlign.justify,
          
         ),

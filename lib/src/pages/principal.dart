@@ -1,6 +1,6 @@
 
-import 'package:Registralo2/src/pages/comoFunciona.dart';
-import 'package:Registralo2/src/pages/consultaBien.dart';
+import 'package:Registralo/src/pages/comoFunciona.dart';
+import 'package:Registralo/src/pages/consultaBien.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:carousel_pro/carousel_pro.dart';
@@ -58,7 +58,7 @@ class _BotonesPage extends State<BotonesPage> {
 //       child: Column(
 //         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: <Widget>[
-//           Text('Registralo2.cl', style: TextStyle( color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold )),
+//           Text('Registralo.cl', style: TextStyle( color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold )),
 //           SizedBox( height: 20.0 ),
 //           Text('Para registrar bienes y consultar mayor detalle de bienes registrados en el sistema, debes inscribirte, completando en el icono REGISTRATE,', style: TextStyle( color: Colors.white, fontSize: 18.0 )),
 //         ],
@@ -252,10 +252,10 @@ class _BotonesPage extends State<BotonesPage> {
 
 
 
-// import 'package:Registralo2/src/pages/NavBarPostLogin.dart';
-// import 'package:Registralo2/src/pages/comoFunciona.dart';
-// import 'package:Registralo2/src/pages/consultaBien.dart';
-// import 'package:Registralo2/src/pages/post_login.dart';
+// import 'package:Registralo/src/pages/NavBarPostLogin.dart';
+// import 'package:Registralo/src/pages/comoFunciona.dart';
+// import 'package:Registralo/src/pages/consultaBien.dart';
+// import 'package:Registralo/src/pages/post_login.dart';
 // import 'package:flutter/material.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 // import 'dart:math';
